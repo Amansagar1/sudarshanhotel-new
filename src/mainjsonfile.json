@@ -1,0 +1,204 @@
+{
+    "hotelInfo": {
+      "name": "Sudarshan Hotel",
+      "location": "Janaura By Pass",
+      "overview": "The Sudarshan Hotel offers a seamless experience for guests to browse rooms, amenities, services, and make bookings. Designed to be user-friendly and optimized for SEO, it highlights our exceptional offerings with a focus on comfort and quality service."
+    },
+    "pages": {
+      "homepage": {
+        "header": {
+          "logo": "/images/sudarshan_logo.png",
+          "navigationMenu": ["Home", "Rooms", "Amenities", "About Us", "Contact", "Book Now"],
+          "contactDetails": {
+            "phone": "+91 1234567890",
+            "email": "contact@sudarshanhotel.com"
+          }
+        },
+        "mainBanner": {
+          "imageSlider": [
+            "/images/hotel_room.jpg",
+            "/images/hotel_lobby.jpg",
+            "/images/hotel_pool.jpg"
+          ],
+          "callToActionButtons": ["View Rooms", "Book Now"]
+        },
+        "highlights": {
+          "intro": "Welcome to Sudarshan Hotel, where comfort meets elegance in the heart of the city.",
+          "USP": ["AC rooms", "prime location", "luxurious amenities"]
+        },
+        "roomsOverview": {
+          "description": "Explore our variety of room types designed to suit every traveler's needs.",
+          "link": "/rooms"
+        },
+        "facilitiesAndAmenities": [
+          "Free Wi-Fi",
+          "Air Conditioning",
+          "Restaurant",
+          "Parking",
+          "24/7 Room Service"
+        ],
+        "footer": {
+          "quickLinks": ["Home", "Rooms", "Amenities", "About Us", "Contact"],
+          "contactInfo": {
+            "address": "Janaura By Pass, City Name",
+            "phone": "+91 1234567890",
+            "email": "contact@sudarshanhotel.com"
+          },
+          "socialMedia": {
+            "facebook": "https://facebook.com/sudarshanhotel",
+            "instagram": "https://instagram.com/sudarshanhotel"
+          }
+        }
+      },
+      "roomsPage": {
+        "roomListings": [
+          {
+            "id": 1,
+            "type": "Deluxe Room",
+            "description": "Comfortable rooms overlooking the airport, featuring a tea/coffee maker, sofa, and modern amenities.",
+            "price": 2900,
+            "gst": 18,
+            "total": 3422,
+            "capacity": "Max 2 guests",
+            "features": ["1 Double Bed", "150 sq ft", "24/7 Room Service"]
+          },
+          {
+            "id": 2,
+            "type": "Super Deluxe Room",
+            "description": "Spacious room offering extra comfort, perfect for families or groups.",
+            "price": 3800,
+            "gst": 18,
+            "total": 4484,
+            "capacity": "Max 3 guests",
+            "features": ["1 Double Bed", "1 Single Bed", "250 sq ft", "24/7 Room Service"]
+          }
+        ],
+        "roomDetailPage": {
+          "callToAction": "Book This Room"
+        }
+      },
+      "amenitiesPage": {
+        "amenitiesList": [
+          {
+            "name": "Free Wi-Fi",
+            "description": "High-speed internet available throughout the hotel."
+          },
+          {
+            "name": "Parking",
+            "description": "Complimentary parking available for guests."
+          },
+          {
+            "name": "Air Conditioning",
+            "description": "All rooms are air-conditioned for your comfort."
+          },
+          {
+            "name": "Laundry",
+            "description": "On-site laundry service available upon request."
+          },
+          {
+            "name": "Room Service",
+            "description": "24/7 room service for all your needs."
+          }
+        ]
+      },
+      "aboutUsPage": {
+        "description": "Sudarshan Hotel has a long-standing history of providing top-tier hospitality. Our mission is to create memorable experiences for our guests, embodying values of quality, service, and comfort.",
+        "team": [
+          {
+            "name": "Dhirendra Singh",
+            "position": "Hotel Manager",
+            "bio": "With over 20 years in the hospitality industry, Dhirendra leads our team with a commitment to excellence."
+          }
+        ]
+      },
+      "contactUsPage": {
+        "formFields": ["Name", "Email", "Subject", "Message"],
+        "googleMap": {
+          "location": "Janaura By Pass",
+          "embedLink": "https://maps.google.com/embed?pb=..."
+        },
+        "directContact": {
+          "phone": "+91 1234567890",
+          "email": "contact@sudarshanhotel.com"
+        },
+        "socialMedia": {
+          "facebook": "https://facebook.com/sudarshanhotel",
+          "instagram": "https://instagram.com/sudarshanhotel"
+        }
+      },
+      "bookingPage": {
+        "bookingForm": {
+          "fields": ["Room Type", "Check-In Date", "Check-Out Date", "Number of Guests", "Special Requests"]
+        },
+        "roomOptions": [
+          {
+            "roomType": "Deluxe Room",
+            "maxGuests": 2,
+            "price": 2900,
+            "gst": 18,
+            "total": 3422,
+            "features": ["1 Double Bed", "150 sq ft"]
+          },
+          {
+            "roomType": "Super Deluxe Room",
+            "maxGuests": 3,
+            "price": 3800,
+            "gst": 18,
+            "total": 4484,
+            "features": ["1 Double Bed", "1 Single Bed", "250 sq ft"]
+          }
+        ],
+        "cancellationPolicy": "Free cancellation 2 days before check-in date. 100% refund.",
+        "paymentOptions": ["Credit Card", "UPI", "Net Banking", "Pay on Arrival"]
+      },
+      "galleryPage": {
+        "images": [
+          "/images/room1.jpg",
+          "/images/amenity1.jpg",
+          "/images/lobby.jpg"
+        ]
+      }
+    },
+    "technicalRequirements": {
+      "responsiveDesign": true,
+      "contentManagementSystem": "WordPress",
+      "seoOptimization": {
+        "metaTags": true,
+        "altText": true,
+        "cleanURLs": true
+      },
+      "security": {
+        "https": true,
+        "dataProtection": true
+      },
+      "accessibility": {
+        "WCAGCompliance": true
+      }
+    },
+    "features": {
+      "roomBookingSystem": {
+        "thirdPartyIntegration": false,
+        "inHouseSystem": true,
+        "paymentGateway": ["Credit Card", "Debit Card", "UPI"]
+      },
+      "userRegistration": true,
+      "multilingualSupport": false,
+      "socialMediaIntegration": {
+        "facebook": true,
+        "instagram": true,
+        "embedFeed": false
+      },
+      "analytics": "Google Analytics"
+    },
+    "performanceRequirements": {
+      "pageLoadTime": "2-3 seconds",
+      "highTrafficCapacity": true
+    },
+    "maintenanceAndSupport": {
+      "documentation": true,
+      "training": true,
+      "technicalSupport": true,
+      "securityUpdates": true
+    }
+  }
+  
