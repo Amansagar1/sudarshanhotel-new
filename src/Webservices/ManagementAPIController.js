@@ -47,7 +47,7 @@ export const getAllRooms = () => {
 
 export const roomBooking = async (bookingDetails) => {
   try {
-    const response = await fetch('http://localhost:5000/api/book', { // Adjust the API URL as needed
+    const response = await fetch(EndPoints.BOOKING_ROOMS(), { 
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

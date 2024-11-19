@@ -10,7 +10,7 @@ const EndPoints = {
     GET_ROOMSDETAILS: () =>
     `http://localhost:5000/api/roomdetails`,
 
-    BOOKING_ROOMS: () => `http://localhost:5000/api/bookings`,
+    BOOKING_ROOMS: () => `http://localhost:5000/api/book`,
 
 
 };

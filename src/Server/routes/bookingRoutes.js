@@ -1,3 +1,5 @@
+
+/* eslint-disable @typescript-eslint/no-require-imports */
 const express = require('express');
 const Booking = require('../models/Booking');
 

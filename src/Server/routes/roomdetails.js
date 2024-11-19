@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 const express = require('express');
 const RoomsDetails = require('../models/RoomDetails');
 const router = express.Router();

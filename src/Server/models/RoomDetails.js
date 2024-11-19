@@ -1,4 +1,4 @@
-
+/* eslint-disable @typescript-eslint/no-require-imports */
 const mongoose = require('mongoose');
 
 const roomSchema = new mongoose.Schema({
