@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState,useEffect  } from "react";
 import {roomBooking} from "../../Webservices/ManagementAPIController"
 
 // console.log("Imported postBooking:", roomBooking);
-const BookingModal = ({ isVisible, onClose }) => {
+const BookingModal = ({ isVisible, onClose, roomDetails }) => {
   const [bookingDetails, setBookingDetails] = useState({
     firstName: "",
     lastName: "",
@@ -17,8 +17,20 @@ const BookingModal = ({ isVisible, onClose }) => {
     checkOutTime: "",
     roomPreference: "", 
     numberOfAdults: "",
+    roomId: roomDetails._id, 
+    price: roomDetails?.price,   
+    title: roomDetails?.title    
   });
 
+  // Destructure the room details
+
+  const { _id, title, price,  } = roomDetails;
+
+  useEffect(() => {
+    console.log("Room ID:", _id);   
+    console.log("Room Title:", title);
+    console.log("Room Price:", price);
+  }, [roomDetails]);
   const [isBooked, setIsBooked] = useState(false); 
 
   const handleChange = (e) => {
@@ -30,16 +42,17 @@ const BookingModal = ({ isVisible, onClose }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    console.log("Booking Details Submitted:", bookingDetails);
     try {
-      // Call the roomBooking function with the booking details
       const response = await roomBooking(bookingDetails);
-
+  
       if (response.success) {
         setIsBooked(true);
         console.log(response.message);
+        alert('Booking successful!');
       } else {
         console.error('Booking failed:', response.message);
+        alert(`Failed to book room: ${result.message}`);
       }
     } catch (error) {
       console.error('Error during booking:', error);
@@ -52,7 +65,9 @@ const BookingModal = ({ isVisible, onClose }) => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 w-full">
+
       <div className="relative bg-white rounded-lg h-[800px] w-[700px] overflow-y-auto">
+   
         {/* Background Image */}
         <div className="top-0 left-0 right-0 h-[300px] bg-cover bg-center rounded-t-lg">
           <div

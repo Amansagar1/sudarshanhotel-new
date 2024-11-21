@@ -15,7 +15,11 @@ const bookingSchema = new mongoose.Schema({
   checkOutTime: String,
   roomPreference: String,
   numberOfAdults: Number,
+  roomId: { type: mongoose.Schema.Types.ObjectId, ref: 'Room' }, // Store room ID (ObjectId type)
+  roomTitle: String, // Store room title
+  roomPrice: String, // Store room price
 });
 
 const Booking = mongoose.model('Booking', bookingSchema);
+
 module.exports = Booking;

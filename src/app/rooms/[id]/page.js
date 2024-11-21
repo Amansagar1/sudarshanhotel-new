@@ -1,8 +1,8 @@
 "use client"
 import React, { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
-import { getRoomDetailsById } from "../../../Webservices/ManagementAPIController"; // Updated function name
-import { FaShower, FaConciergeBell, FaKey, FaSuitcase, FaBed, FaWifi, FaSwimmer } from "react-icons/fa";
+import { getRoomDetailsById,checkRoomStatus } from "../../../Webservices/ManagementAPIController"; // Updated function name
+import {  FaKey, FaSwimmer } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
 import BookingModal from "../../../components/RoomBooking/BookingPopup"
@@ -34,6 +34,8 @@ const RoomDetailsPage = () => {
     fetchRoomDetails();
   }, [id]); // Dependency array ensures this runs whenever the id changes
 
+
+  
   const images = [
     "/images/WhatsApp Image 2024-11-05 at 20.44.16_171296f5.jpg",
     "/images/WhatsApp Image 2024-11-05 at 20.44.16_37e156be.jpg",
@@ -49,20 +51,7 @@ const RoomDetailsPage = () => {
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
   };
-  // const handleBookNow = () => {
-  //   if (room) {
-  //     // Redirect to Booking page with room details in query parameters
-  //     router.push({
-  //       pathname: '/bookingonline',
-  //       query: {
-  //         roomId: room._id,
-  //         roomTitle: room.title,
-  //         roomPrice: room.price,
-  //         roomDescription: room.description
-  //       }
-  //     });
-  //   }
-  // };
+ 
   const handleBookNow = () => {
     setShowModal(true); // Show the modal when Book Now is clicked
   };
@@ -71,11 +60,51 @@ const RoomDetailsPage = () => {
     setShowModal(false); // Close the modal
   };
 
-  const handleBookingSubmit = (details) => {
-    console.log("Booking details submitted:", details);
-    setShowModal(false); // Close the modal after booking submission
-    // Here you can handle further booking logic, like sending data to an API
+  const handleBookingSubmit = async (e) => {
+    e.preventDefault();
+  
+    // Assuming you're passing room details from parent to modal
+    const { _id, title, price } = roomDetails;
+  
+    const bookingData = {
+      firstName,
+      lastName,
+      address,
+      city,
+      pincode,
+      phone,
+      email,
+      checkIn,
+      checkOut,
+      checkInTime,
+      checkOutTime,
+      roomPreference,
+      numberOfAdults,
+      roomId: _id, // Pass room ID
+      roomTitle: title, // Pass room title
+      roomPrice: price, // Pass room price
+    };
+  
+    try {
+      const response = await fetch('/api/book', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(bookingData),
+      });
+  
+      const data = await response.json();
+      if (data.success) {
+        console.log("Booking confirmed:", data);
+      } else {
+        console.error("Booking failed:", data.message);
+      }
+    } catch (error) {
+      console.error("Error during booking:", error);
+    }
   };
+  
   if (error) return <div>{error}</div>;
   if (!room) return <div>Loading...</div>;
 
@@ -203,6 +232,8 @@ const RoomDetailsPage = () => {
         isVisible={showModal}
         onClose={handleCloseModal}
         onSubmit={handleBookingSubmit}
+      
+        roomDetails={room || {}}
       />
     </div>
   );

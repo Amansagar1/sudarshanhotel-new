@@ -1,5 +1,6 @@
 
 /* eslint-disable @typescript-eslint/no-require-imports */
+/* eslint-disable @typescript-eslint/no-require-imports */
 const express = require('express');
 const Booking = require('../models/Booking');
 
@@ -22,8 +23,12 @@ router.post('/book', async (req, res) => {
       checkOutTime,
       roomPreference,
       numberOfAdults,
+      roomId, // Include roomId from the client
+      roomTitle, // Include roomTitle from the client
+      roomPrice, // Include roomPrice from the client
     } = req.body;
 
+    // Create new booking
     const newBooking = new Booking({
       firstName,
       lastName,
@@ -38,8 +43,12 @@ router.post('/book', async (req, res) => {
       checkOutTime,
       roomPreference,
       numberOfAdults,
+      roomId, // Store room ID
+      roomTitle, // Store room title
+      roomPrice, // Store room price
     });
 
+    // Save the booking
     await newBooking.save();
 
     res.status(201).json({ message: 'Booking confirmed!', booking: newBooking });
