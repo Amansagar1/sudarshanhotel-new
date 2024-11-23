@@ -4,18 +4,22 @@ import Image from "next/image";
 import Link from 'next/link';
 import BrandLogo from "../Assets/WhatsApp_Image_2024-11-05_at_21.13.36_d4644e5a-removebg-preview.png";
 import navLinks from "./Navbar.json";
+import UserCard from './UserCard';
+import { useSession } from 'next-auth/react'; // Importing useSession
 
 const Navbar = () => {
-  const [menuOpen, setMenuOpen] = useState(false); // State to toggle menu
-  const [navbarBg, setNavbarBg] = useState('bg-transparent'); // Default background color
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [navbarBg, setNavbarBg] = useState('bg-transparent');
+  const [userCardOpen, setUserCardOpen] = useState(false); // User card toggle state
 
-  // Change navbar background color on scroll
+  const { data: session, status } = useSession(); // Get session data
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
-        setNavbarBg('bg-[#000000e7]'); // Change to black background on scroll
+        setNavbarBg('bg-[#000000e7]');
       } else {
-        setNavbarBg('bg-transparent'); // Transparent on top of the page
+        setNavbarBg('bg-transparent');
       }
     };
 
@@ -26,23 +30,39 @@ const Navbar = () => {
     };
   }, []);
 
-  // Toggle menu visibility on click
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
+  const toggleUserCard = () => {
+    setUserCardOpen(!userCardOpen);
+  };
+
+  // Function to generate initials from user name
+  const getInitials = (name) => {
+    const nameArray = name.split(' ');
+    const firstNameInitial = nameArray[0]?.charAt(0).toUpperCase();
+    const lastNameInitial = nameArray.length > 1 ? nameArray[nameArray.length - 1]?.charAt(0).toUpperCase() : '';
+    return `${firstNameInitial}${lastNameInitial}`;
+  };
+
+  // Check if session is available and get user data
+  const user = session?.user || {
+    name: 'Guest User',
+    email: 'guest@example.com',
+    image: '',
+  };
+
   return (
     <div className={`fixed top-0 w-full z-50 transition-all duration-300 ${navbarBg}`}>
-      {/* Navbar with conditional background color */}
-      <div className="w-full mx-auto py-2 md:py-1 bg-black md:bg-transparent"> {/* Black for mobile, transparent for desktop */}
-        <div className="flex items-center justify-between w-[90%] mx-auto">
-
+      <div className="w-full py-2 md:py-1 bg-black md:bg-transparent">
+        <div className="flex items-center justify-between w-[95%] relative">
           {/* Logo Section */}
           <div className="flex items-center">
             <Image
               src={BrandLogo}
-              width={160} // Fixed size
-              height={160} // Fixed size
+              width={160}
+              height={160}
               alt="brand logo"
             />
           </div>
@@ -56,19 +76,39 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Booking Button (Desktop) */}
-          <div className="hidden md:flex items-center">
-            <Link href="/bookingonline">
-              <button className="border border-yellow-600 text-yellow-600 px-6 py-2 rounded-md hover:bg-yellow-600 hover:text-white transition duration-300">
-                BOOKING ONLINE
-              </button>
-            </Link>
+          {/* User Profile Section */}
+          <div className="flex items-center relative">
+            {/* User Circle (Right side of Navbar) */}
+            <div
+              onClick={toggleUserCard}
+              className="cursor-pointer w-12 h-12 rounded-full border-2 border-gray-400 overflow-hidden flex justify-center items-center bg-black"
+            >
+              {/* If user has an image, show it, else show initials */}
+              {user.image ? (
+                <img
+                  className="w-full h-full object-cover"
+                  src={user.image}
+                  alt="user"
+                />
+              ) : (
+                <span className="text-white text-lg font-semibold ">
+                  {getInitials(user.name)}
+                </span>
+              )}
+            </div>
+
+            {/* User Card Popup (Position it correctly) */}
+            {userCardOpen && (
+              <div className="absolute top-14 right-0 p-4 w-56 z-50 transition-all duration-300">
+                <UserCard user={user} isOpen={userCardOpen} />
+              </div>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
             <button onClick={toggleMenu} className="text-white text-3xl">
-              {menuOpen ? "✕" : "☰"} {/* Change icon based on menu state */}
+              {menuOpen ? "✕" : "☰"}
             </button>
           </div>
         </div>
@@ -76,18 +116,25 @@ const Navbar = () => {
 
       {/* Mobile Menu (Dropdown on Mobile) */}
       {menuOpen && (
-        <div className="md:hidden bg-black text-white w-full transition-all duration-300">
-          <div className="flex flex-col items-center py-2 space-y-2">
+        <div className="md:hidden bg-gray-200 text-black p-4 w-full transition-all duration-300 flex items-center justify-center">
+          <div className="flex flex-col py-2 space-y-2">
             {navLinks.map((link) => (
               <Link key={link.label} href={link.href} onClick={toggleMenu}>
                 <span className="hover:text-yellow-500 transition duration-300">{link.label}</span>
               </Link>
             ))}
-            <Link href="/bookingonline">
-              <button className="w-full px-6 py-2 border border-yellow-600 text-yellow-600 hover:bg-yellow-600 hover:text-white transition duration-300">
-                BOOKING ONLINE
-              </button>
-            </Link>
+            <div onClick={toggleUserCard} className="cursor-pointer flex items-center justify-center w-full">
+              <div className="w-10 h-10 flex justify-center items-center rounded-full bg-gray-300 border-2 border-gray-400">
+                {user.image ? (
+                  <img className="w-full h-full object-cover" src={user.image} alt="user" />
+                ) : (
+                  <span className="text-white text-lg font-semibold">
+                    {getInitials(user.name)}
+                  </span>
+                )}
+              </div>
+              {userCardOpen && <UserCard user={user} isOpen={userCardOpen} />}
+            </div>
           </div>
         </div>
       )}
