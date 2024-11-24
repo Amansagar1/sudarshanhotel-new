@@ -7,7 +7,6 @@ import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
 
-
 const LoginPage = () => {
   const router = useRouter();
   const { data: session, status } = useSession();
@@ -34,58 +33,60 @@ const LoginPage = () => {
     }
   }, [status, session, router]);
 
-  
+  const validateForm = () => {
+    if (!email || !password) {
+      setError("Email and Password are required.");
+      return false;
+    }
+    if (isSignUp && password !== confirmPassword) {
+      setError("Passwords do not match.");
+      return false;
+    }
+    return true;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
     setError("");
-  
+
+    if (!validateForm()) {
+      setIsLoading(false);
+      return;
+    }
+
     try {
       if (isSignUp) {
-        // Handle sign-up logic
-        console.log("Signing up user:", { fullName, email, mobileNumber, password });
-  
-        // Make a request to your backend to create a new user (with hashed password)
-        // After successful sign-up, try logging in with the created email and password
-  
         const signUpResult = await signIn("credentials", {
           redirect: false,
           email,
           password,
         });
-  
+
         if (signUpResult?.error) {
           setError("Error signing up. Please try again.");
           return;
         }
-  
-        // Reload the session to reflect the new user details
+
         const { data: updatedSession } = await fetch("/api/auth/session").then(res => res.json());
-  
-        // Ensure user session is updated correctly
+
         if (updatedSession?.user?.name) {
-          console.log("Session updated:", updatedSession);
+          router.push("/rooms");
         } else {
           setError("Failed to update session after sign-up.");
-          return;
         }
-  
-        // Automatically redirect to rooms if the sign-up is successful
-        router.push("/rooms");
       } else {
-        // Handle login logic
         const loginResult = await signIn("credentials", {
           redirect: false,
           email,
           password,
         });
-  
+
         if (loginResult?.error) {
           setError("Invalid email or password. Please try again.");
           return;
         }
-  
-        // Redirect to rooms if login is successful
+
         router.push("/rooms");
       }
     } catch (error) {
@@ -95,8 +96,7 @@ const LoginPage = () => {
       setIsLoading(false);
     }
   };
-  
-  
+
   const handleGoogleLogin = async () => {
     try {
       setIsLoading(true);
@@ -112,53 +112,19 @@ const LoginPage = () => {
         return;
       }
   
-      router.push(result.url);
+      if (result.url) {
+        router.push(result.url);
+      } else {
+        setError("An error occurred while logging in. Please try again.");
+      }
     } catch (error) {
       setError("An unexpected error occurred. Please try again.");
     } finally {
       setIsLoading(false);
     }
   };
-  
-  // const handleGoogleLogin = async () => {
-  //   try {
-  //     setIsLoading(true);
-  //     setError("");
-  //     console.log("Initiating Google sign-in...");
 
-  //     const result = await signIn("google", {
-  //       redirect: false,
-  //       callbackUrl: "/rooms",
-  //     });
-
-  //     console.log("Sign-in result:", result);
-
-  //     if (result?.error) {
-  //       console.error("Sign-in error:", result.error);
-  //       setError("Failed to sign in with Google. Please try again.");
-  //       return;
-  //     }
-
-  //     if (result?.url) {
-  //       console.log("Redirecting to:", result.url);
-  //       router.push(result.url);
-  //     }
-  //   } catch (error) {
-  //     console.error("Sign-in exception:", error);
-  //     setError("An unexpected error occurred. Please try again.");
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // };
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   if (isSignUp) {
-  //     console.log("User signed up with details:", { fullName, email, mobileNumber, password });
-  //   } else {
-  //     console.log("User logged in with email:", email);
-  //   }
-  // };
-  // If still loading the session, show loading state
+  // Loading state
   if (status === "loading") {
     return (
       <div className="min-h-screen flex justify-center items-center">
@@ -182,70 +148,64 @@ const LoginPage = () => {
             </div>
           )}
 
-<form onSubmit={handleSubmit} className="flex flex-col">
-  {/* Full Name (only for Sign Up) */}
-  {isSignUp && (
-    <input
-      className="p-2 mt-2 rounded-xl border"
-      type="text"
-      name="fullName"
-      placeholder="Full Name"
-      value={fullName}
-      onChange={(e) => setFullName(e.target.value)}
-    />
-  )}
+          <form onSubmit={handleSubmit} className="flex flex-col">
+            {isSignUp && (
+              <input
+                className="p-2 mt-2 rounded-xl border"
+                type="text"
+                name="fullName"
+                placeholder="Full Name"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+              />
+            )}
+            <input
+              className="p-2 mt-2 rounded-xl border"
+              type="email"
+              name="email"
+              placeholder="Enter Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
 
-  {/* Email Input */}
-  <input
-    className="p-2 mt-2 rounded-xl border"
-    type="email"
-    name="email"
-    placeholder="Enter Email"
-    value={email}
-    onChange={(e) => setEmail(e.target.value)}
-  />
+            {isSignUp && (
+              <input
+                className="p-2 mt-8 rounded-xl border"
+                type="text"
+                name="mobileNumber"
+                placeholder="Enter Mobile Number"
+                value={mobileNumber}
+                onChange={(e) => setMobileNumber(e.target.value)}
+              />
+            )}
 
-  {/* Mobile Number Input (only for Sign Up) */}
-  {isSignUp && (
-    <input
-      className="p-2 mt-8 rounded-xl border"
-      type="text"
-      name="mobileNumber"
-      placeholder="Enter Mobile Number"
-      value={mobileNumber}
-      onChange={(e) => setMobileNumber(e.target.value)}
-    />
-  )}
+            <input
+              className="p-2 mt-8 rounded-xl border"
+              type="password"
+              name="password"
+              placeholder="Enter Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
 
-  {/* Password Input */}
-  <input
-    className="p-2 mt-8 rounded-xl border"
-    type="password"
-    name="password"
-    placeholder="Enter Password"
-    value={password}
-    onChange={(e) => setPassword(e.target.value)}
-  />
+            {isSignUp && (
+              <input
+                className="p-2 mt-8 rounded-xl border"
+                type="password"
+                name="confirmPassword"
+                placeholder="Confirm Password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+            )}
 
-  {/* Confirm Password Input (only for Sign Up) */}
-  {isSignUp && (
-    <input
-      className="p-2 mt-8 rounded-xl border"
-      type="password"
-      name="confirmPassword"
-      placeholder="Confirm Password"
-      value={confirmPassword}
-      onChange={(e) => setConfirmPassword(e.target.value)}
-    />
-  )}
-
-  <button
-    className="bg-[#002D74] text-white py-2 rounded-xl hover:scale-105 duration-300 hover:bg-[#206ab1] font-medium mt-4"
-    type="submit"
-  >
-    {isSignUp ? "Sign Up" : "Login"}
-  </button>
-</form>
+            <button
+              className="bg-[#002D74] text-white py-2 rounded-xl hover:scale-105 duration-300 hover:bg-[#206ab1] font-medium mt-4"
+              type="submit"
+            >
+              {isSignUp ? "Sign Up" : "Login"}
+            </button>
+          </form>
 
           <div className="mt-6 items-center text-gray-100 flex">
             <hr className="border-gray-300 flex-grow" />
@@ -253,7 +213,6 @@ const LoginPage = () => {
             <hr className="border-gray-300 flex-grow" />
           </div>
 
-          {/* Google Login Button */}
           <button
             onClick={handleGoogleLogin}
             disabled={isLoading}
