@@ -77,12 +77,3 @@ export const roomBooking = async (bookingDetails) => {
 };
 
 
-export const getBookingDetails = (bookingId) => {
-  return axios
-    .get(`${EndPoints.GET_BOOKING_DETAILS()}/${bookingId}`) // Replace with your actual endpoint
-    .then((response) => response.data)
-    .catch((error) => {
-      console.error("Error fetching booking details:", error);
-      return null;
-    });
-};

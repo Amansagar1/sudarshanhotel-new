@@ -2,12 +2,12 @@
 import React from 'react';
 import Image from "next/image";
 import cardData from "./Roomdetails.json"; 
-import cardImage1 from "../../Components/Assets/WhatsApp Image 2024-11-05 at 20.44.16_5e94e5d3.jpg";
-import cardImage2 from "../../Components/Assets/WhatsApp Image 2024-11-05 at 20.44.16_37e156be.jpg";
-import cardImage3 from "../../Components/Assets/WhatsApp Image 2024-11-05 at 20.44.16_171296f5.jpg";
+import cardImage1 from "../../Components/Assets/img1.jpg";
+import cardImage2 from "../../Components/Assets/img2.jpg";
+import cardImage3 from "../../Components/Assets/img3.jpg";
 
 // Background Image
-import backgroundImage from "../../Components/Assets/WhatsApp_Image_2024-11-05_at_21.13.36_d4644e5a-removebg-preview.png";
+import backgroundImage from "../../Components/Assets/logo (1).png";
 
 const RoomsSuites = () => {
   const images = [cardImage1, cardImage2, cardImage3];
@@ -30,7 +30,7 @@ const RoomsSuites = () => {
       {/* Content with Cards */}
       <div className="relative z-10 flex flex-col items-center text-center space-y-6 max-w-5xl">
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-4">
-          SUDARSHAN'S ROOMS & SUITES
+          SUDARSHAN&apos;S ROOMS & SUITES
         </h1>
         <p className="text-sm md:text-base lg:text-lg text-gray-700 mb-6 px-2 md:px-0">
           Experience exceptional comfort and elegance with our specially designed rooms and suites. Each room promises a blend of luxurious comfort and thoughtful amenities, ensuring a perfect stay.
@@ -57,7 +57,7 @@ const RoomsSuites = () => {
 };
 
 // Card Component
-const Card = ({ image, title, description, price, beds, rating, index }) => {
+const Card = ({ image, title, description, price, beds, rating }) => {
   return (
     <div className="bg-white shadow-lg rounded-lg overflow-hidden w-full border">
       {/* Card Image */}

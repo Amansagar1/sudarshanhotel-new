@@ -3,35 +3,35 @@
     "id": 1,
     "name": "Room Services",
     "icon": "FaConciergeBell",
-    "image": "/images/WhatsApp Image 2024-11-05 at 20.44.16_5e94e5d3.jpg",
+    "image": "/images/img5.jpg",
     "description": "24/7 Room Service"
   },
   {
     "id": 2,
     "name": "Wi-Fi Internet",
     "icon": "FaWifi",
-    "image": "/images/WhatsApp Image 2024-11-05 at 20.44.16_37e156be.jpg",
+    "image": "/images/img4.jpg",
     "description": "High-speed Wi-Fi throughout the hotel"
   },
   {
     "id": 3,
     "name": "Smart Key",
     "icon": "FaKey",
-    "image": "/images/WhatsApp Image 2024-11-05 at 20.44.16_171296f5.jpg",
+    "image": "/images/img3.jpg",
     "description": "Smart key access for your convenience"
   },
   {
     "id": 4,
     "name": "Breakfast",
     "icon": "FaUtensils",
-    "image": "/images/WhatsApp Image 2024-11-05 at 20.44.17_10df680e.jpg",
+    "image": "/images/img2.jpg",
     "description": "Complimentary breakfast"
   },
   {
     "id": 5,
     "name": "Swimming Pool",
     "icon": "FaSwimmingPool",
-    "image": "/images/WhatsApp Image 2024-11-05 at 20.44.17_32dc3a0d.jpg",
+    "image": "/images/img1.jpg",
     "description": "Relax and unwind in our swimming pool"
   }
 ]

@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from 'react';
 import Image from "next/image";
-import SideImage from "../Assets/WhatsApp Image 2024-11-05 at 20.44.17_10df680e.jpg"; // Image for About Section
+import SideImage from "../Assets/img3.jpg"; // Image for About Section
 
 const AboutHotel = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -38,7 +38,7 @@ const AboutHotel = () => {
         </h2>
 
         <p className="text-gray-600 mb-8">
-          Located in the heart of Ayodhya, Hotel Sudarshan offers the finest in luxury, comfort, and exceptional hospitality. With world-class amenities, expansive rooms, and impeccable service, we ensure every guest feels at home during their stay. Whether you're here for business or leisure, Hotel Sudarshan provides an unforgettable experience with breathtaking views and exquisite dining.
+          Located in the heart of Ayodhya, Hotel Sudarshan offers the finest in luxury, comfort, and exceptional hospitality. With world-class amenities, expansive rooms, and impeccable service, we ensure every guest feels at home during their stay. Whether you&apos;re here for business or leisure, Hotel Sudarshan provides an unforgettable experience with breathtaking views and exquisite dining.
         </p>
 
         {/* Stats */}
