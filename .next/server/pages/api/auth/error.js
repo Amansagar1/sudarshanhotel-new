@@ -43,16 +43,6 @@ module.exports = require("react");
 
 /***/ }),
 
-/***/ "react-dom":
-/*!****************************!*\
-  !*** external "react-dom" ***!
-  \****************************/
-/***/ ((module) => {
-
-module.exports = require("react-dom");
-
-/***/ }),
-
 /***/ "react/jsx-dev-runtime":
 /*!****************************************!*\
   !*** external "react/jsx-dev-runtime" ***!
@@ -73,36 +63,6 @@ module.exports = require("react/jsx-runtime");
 
 /***/ }),
 
-/***/ "fs":
-/*!*********************!*\
-  !*** external "fs" ***!
-  \*********************/
-/***/ ((module) => {
-
-module.exports = require("fs");
-
-/***/ }),
-
-/***/ "stream":
-/*!*************************!*\
-  !*** external "stream" ***!
-  \*************************/
-/***/ ((module) => {
-
-module.exports = require("stream");
-
-/***/ }),
-
-/***/ "zlib":
-/*!***********************!*\
-  !*** external "zlib" ***!
-  \***********************/
-/***/ ((module) => {
-
-module.exports = require("zlib");
-
-/***/ }),
-
 /***/ "(api)/./node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js?kind=PAGES_API&page=%2Fapi%2Fauth%2Ferror&preferredRegion=&absolutePagePath=.%2Fsrc%5Cpages%5Capi%5Cauth%5Cerror.js&middlewareConfigBase64=e30%3D!":
 /*!************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/next/dist/build/webpack/loaders/next-route-loader/index.js?kind=PAGES_API&page=%2Fapi%2Fauth%2Ferror&preferredRegion=&absolutePagePath=.%2Fsrc%5Cpages%5Capi%5Cauth%5Cerror.js&middlewareConfigBase64=e30%3D! ***!
@@ -119,7 +79,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \*************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-dev-runtime */ \"react/jsx-dev-runtime\");\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/router */ \"(api)/./node_modules/next/router.js\");\n/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! next/link */ \"(api)/./node_modules/next/link.js\");\n/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_2__);\n// pages/auth/error.js\n\n\n\nconst ErrorPage = ()=>{\n    const router = (0,next_router__WEBPACK_IMPORTED_MODULE_1__.useRouter)();\n    const { error } = router.query;\n    return /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n        children: [\n            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"h1\", {\n                children: \"Authentication Error\"\n            }, void 0, false, {\n                fileName: \"D:\\\\private work\\\\sudarshanhotel-new\\\\src\\\\pages\\\\api\\\\auth\\\\error.js\",\n                lineNumber: 11,\n                columnNumber: 7\n            }, undefined),\n            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"p\", {\n                children: error ? error : \"An unknown error occurred.\"\n            }, void 0, false, {\n                fileName: \"D:\\\\private work\\\\sudarshanhotel-new\\\\src\\\\pages\\\\api\\\\auth\\\\error.js\",\n                lineNumber: 12,\n                columnNumber: 7\n            }, undefined),\n            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"p\", {\n                children: /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)((next_link__WEBPACK_IMPORTED_MODULE_2___default()), {\n                    href: \"/auth/signin\",\n                    children: \"Go back to Sign In\"\n                }, void 0, false, {\n                    fileName: \"D:\\\\private work\\\\sudarshanhotel-new\\\\src\\\\pages\\\\api\\\\auth\\\\error.js\",\n                    lineNumber: 14,\n                    columnNumber: 9\n                }, undefined)\n            }, void 0, false, {\n                fileName: \"D:\\\\private work\\\\sudarshanhotel-new\\\\src\\\\pages\\\\api\\\\auth\\\\error.js\",\n                lineNumber: 13,\n                columnNumber: 7\n            }, undefined)\n        ]\n    }, void 0, true, {\n        fileName: \"D:\\\\private work\\\\sudarshanhotel-new\\\\src\\\\pages\\\\api\\\\auth\\\\error.js\",\n        lineNumber: 10,\n        columnNumber: 5\n    }, undefined);\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ErrorPage);\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwaSkvLi9zcmMvcGFnZXMvYXBpL2F1dGgvZXJyb3IuanMiLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7OztBQUFBLHNCQUFzQjs7QUFDa0I7QUFDWDtBQUU3QixNQUFNRSxZQUFZO0lBQ2hCLE1BQU1DLFNBQVNILHNEQUFTQTtJQUN4QixNQUFNLEVBQUVJLEtBQUssRUFBRSxHQUFHRCxPQUFPRSxLQUFLO0lBRTlCLHFCQUNFLDhEQUFDQzs7MEJBQ0MsOERBQUNDOzBCQUFHOzs7Ozs7MEJBQ0osOERBQUNDOzBCQUFHSixRQUFRQSxRQUFROzs7Ozs7MEJBQ3BCLDhEQUFDSTswQkFDQyw0RUFBQ1Asa0RBQUlBO29CQUFDUSxNQUFLOzhCQUFlOzs7Ozs7Ozs7Ozs7Ozs7OztBQUlsQztBQUVBLGlFQUFlUCxTQUFTQSxFQUFDIiwic291cmNlcyI6WyJEOlxccHJpdmF0ZSB3b3JrXFxzdWRhcnNoYW5ob3RlbC1uZXdcXHNyY1xccGFnZXNcXGFwaVxcYXV0aFxcZXJyb3IuanMiXSwic291cmNlc0NvbnRlbnQiOlsiLy8gcGFnZXMvYXV0aC9lcnJvci5qc1xyXG5pbXBvcnQgeyB1c2VSb3V0ZXIgfSBmcm9tICduZXh0L3JvdXRlcic7IFxyXG5pbXBvcnQgTGluayBmcm9tICduZXh0L2xpbmsnO1xyXG5cclxuY29uc3QgRXJyb3JQYWdlID0gKCkgPT4ge1xyXG4gIGNvbnN0IHJvdXRlciA9IHVzZVJvdXRlcigpOyBcclxuICBjb25zdCB7IGVycm9yIH0gPSByb3V0ZXIucXVlcnk7XHJcblxyXG4gIHJldHVybiAoXHJcbiAgICA8ZGl2PlxyXG4gICAgICA8aDE+QXV0aGVudGljYXRpb24gRXJyb3I8L2gxPlxyXG4gICAgICA8cD57ZXJyb3IgPyBlcnJvciA6IFwiQW4gdW5rbm93biBlcnJvciBvY2N1cnJlZC5cIn08L3A+XHJcbiAgICAgIDxwPlxyXG4gICAgICAgIDxMaW5rIGhyZWY9XCIvYXV0aC9zaWduaW5cIj5HbyBiYWNrIHRvIFNpZ24gSW48L0xpbms+XHJcbiAgICAgIDwvcD5cclxuICAgIDwvZGl2PlxyXG4gICk7XHJcbn07XHJcblxyXG5leHBvcnQgZGVmYXVsdCBFcnJvclBhZ2U7XHJcbiJdLCJuYW1lcyI6WyJ1c2VSb3V0ZXIiLCJMaW5rIiwiRXJyb3JQYWdlIiwicm91dGVyIiwiZXJyb3IiLCJxdWVyeSIsImRpdiIsImgxIiwicCIsImhyZWYiXSwiaWdub3JlTGlzdCI6W10sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///(api)/./src/pages/api/auth/error.js\n");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__),\n/* harmony export */   getServerSideProps: () => (/* binding */ getServerSideProps)\n/* harmony export */ });\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-dev-runtime */ \"react/jsx-dev-runtime\");\n/* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! next/link */ \"(api)/./node_modules/next/link.js\");\n/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_1__);\n// pages/auth/error.js\n\n\nconst ErrorPage = ({ error })=>{\n    return /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"div\", {\n        children: [\n            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"h1\", {\n                children: \"Authentication Error\"\n            }, void 0, false, {\n                fileName: \"D:\\\\private work\\\\sudarshanhotel-new1\\\\src\\\\pages\\\\api\\\\auth\\\\error.js\",\n                lineNumber: 7,\n                columnNumber: 7\n            }, undefined),\n            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"p\", {\n                children: error ? error : \"An unknown error occurred.\"\n            }, void 0, false, {\n                fileName: \"D:\\\\private work\\\\sudarshanhotel-new1\\\\src\\\\pages\\\\api\\\\auth\\\\error.js\",\n                lineNumber: 8,\n                columnNumber: 7\n            }, undefined),\n            /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)(\"p\", {\n                children: /*#__PURE__*/ (0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxDEV)((next_link__WEBPACK_IMPORTED_MODULE_1___default()), {\n                    href: \"/login\",\n                    children: \"Go back to Sign In\"\n                }, void 0, false, {\n                    fileName: \"D:\\\\private work\\\\sudarshanhotel-new1\\\\src\\\\pages\\\\api\\\\auth\\\\error.js\",\n                    lineNumber: 10,\n                    columnNumber: 9\n                }, undefined)\n            }, void 0, false, {\n                fileName: \"D:\\\\private work\\\\sudarshanhotel-new1\\\\src\\\\pages\\\\api\\\\auth\\\\error.js\",\n                lineNumber: 9,\n                columnNumber: 7\n            }, undefined)\n        ]\n    }, void 0, true, {\n        fileName: \"D:\\\\private work\\\\sudarshanhotel-new1\\\\src\\\\pages\\\\api\\\\auth\\\\error.js\",\n        lineNumber: 6,\n        columnNumber: 5\n    }, undefined);\n};\nconst getServerSideProps = async (context)=>{\n    const { error } = context.query;\n    return {\n        props: {\n            error: error || null\n        }\n    };\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ErrorPage);\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwaSkvLi9zcmMvcGFnZXMvYXBpL2F1dGgvZXJyb3IuanMiLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7O0FBQUEsc0JBQXNCOztBQUNPO0FBRTdCLE1BQU1DLFlBQVksQ0FBQyxFQUFFQyxLQUFLLEVBQUU7SUFDMUIscUJBQ0UsOERBQUNDOzswQkFDQyw4REFBQ0M7MEJBQUc7Ozs7OzswQkFDSiw4REFBQ0M7MEJBQUdILFFBQVFBLFFBQVE7Ozs7OzswQkFDcEIsOERBQUNHOzBCQUNDLDRFQUFDTCxrREFBSUE7b0JBQUNNLE1BQUs7OEJBQVM7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBSTVCO0FBRU8sTUFBTUMscUJBQXFCLE9BQU9DO0lBQ3ZDLE1BQU0sRUFBRU4sS0FBSyxFQUFFLEdBQUdNLFFBQVFDLEtBQUs7SUFFL0IsT0FBTztRQUNMQyxPQUFPO1lBQ0xSLE9BQU9BLFNBQVM7UUFDbEI7SUFDRjtBQUNGLEVBQUU7QUFFRixpRUFBZUQsU0FBU0EsRUFBQyIsInNvdXJjZXMiOlsiRDpcXHByaXZhdGUgd29ya1xcc3VkYXJzaGFuaG90ZWwtbmV3MVxcc3JjXFxwYWdlc1xcYXBpXFxhdXRoXFxlcnJvci5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBwYWdlcy9hdXRoL2Vycm9yLmpzXHJcbmltcG9ydCBMaW5rIGZyb20gJ25leHQvbGluayc7XHJcblxyXG5jb25zdCBFcnJvclBhZ2UgPSAoeyBlcnJvciB9KSA9PiB7XHJcbiAgcmV0dXJuIChcclxuICAgIDxkaXY+XHJcbiAgICAgIDxoMT5BdXRoZW50aWNhdGlvbiBFcnJvcjwvaDE+XHJcbiAgICAgIDxwPntlcnJvciA/IGVycm9yIDogXCJBbiB1bmtub3duIGVycm9yIG9jY3VycmVkLlwifTwvcD5cclxuICAgICAgPHA+XHJcbiAgICAgICAgPExpbmsgaHJlZj1cIi9sb2dpblwiPkdvIGJhY2sgdG8gU2lnbiBJbjwvTGluaz5cclxuICAgICAgPC9wPlxyXG4gICAgPC9kaXY+XHJcbiAgKTtcclxufTtcclxuXHJcbmV4cG9ydCBjb25zdCBnZXRTZXJ2ZXJTaWRlUHJvcHMgPSBhc3luYyAoY29udGV4dCkgPT4ge1xyXG4gIGNvbnN0IHsgZXJyb3IgfSA9IGNvbnRleHQucXVlcnk7XHJcblxyXG4gIHJldHVybiB7XHJcbiAgICBwcm9wczoge1xyXG4gICAgICBlcnJvcjogZXJyb3IgfHwgbnVsbCxcclxuICAgIH0sXHJcbiAgfTtcclxufTtcclxuXHJcbmV4cG9ydCBkZWZhdWx0IEVycm9yUGFnZTtcclxuIl0sIm5hbWVzIjpbIkxpbmsiLCJFcnJvclBhZ2UiLCJlcnJvciIsImRpdiIsImgxIiwicCIsImhyZWYiLCJnZXRTZXJ2ZXJTaWRlUHJvcHMiLCJjb250ZXh0IiwicXVlcnkiLCJwcm9wcyJdLCJpZ25vcmVMaXN0IjpbXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(api)/./src/pages/api/auth/error.js\n");
 
 /***/ })
 

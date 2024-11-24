@@ -16,17 +16,26 @@ export const getAllRooms = () => {
   };
 
   export const getAllRoomsDetails = () => {
+    const url = EndPoints.GET_ROOMSDETAILS();
+    console.log("Requesting URL:", url);
+
     return axios
-      .get(EndPoints.GET_ROOMSDETAILS()) // Assuming EndPoints is correctly defined
-      .then((response) => {
-        console.log("API Response:", response.data); // Check response data
-        return { result: response.data }; // Ensure the data structure is correct
-      })
-      .catch((error) => {
-        console.error("Error fetching rooms data:", error);
-        return { result: null };
-      });
-  };
+        .get(url)
+        .then((response) => {
+            console.log("API Response:", response.data);
+            return { result: response.data };
+        })
+        .catch((error) => {
+            console.error("Error details:", {
+                message: error.message,
+                code: error.code,
+                config: error.config,
+                response: error.response,
+            });
+            return { result: null };
+        });
+};
+
 
   export const getRoomDetailsById = (id) => {
     return axios
@@ -65,4 +74,15 @@ export const roomBooking = async (bookingDetails) => {
     console.error('Error in roomBooking:', error);
     throw error; // Rethrow error so it can be caught in handleSubmit
   }
+};
+
+
+export const getBookingDetails = (bookingId) => {
+  return axios
+    .get(`${EndPoints.GET_BOOKING_DETAILS()}/${bookingId}`) // Replace with your actual endpoint
+    .then((response) => response.data)
+    .catch((error) => {
+      console.error("Error fetching booking details:", error);
+      return null;
+    });
 };

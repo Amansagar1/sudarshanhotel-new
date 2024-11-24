@@ -1,4 +1,4 @@
-// File: D:\private work\sudarshanhotel-new\src\app\rooms\page.js
+// File: D:\private work\sudarshanhotel-new1\src\app\rooms\page.js
 import * as entry from '../../../../src/app/rooms/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

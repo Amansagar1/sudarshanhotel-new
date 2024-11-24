@@ -39,7 +39,13 @@ const Navbar = () => {
   };
 
   // Function to generate initials from user name
-  const getInitials = (name) => {
+  const getInitials = (name, email) => {
+    // If name is not available, fallback to email
+    if (!name && email) {
+      const emailName = email.split('@')[0];  // Extract the part before '@'
+      name = emailName;
+    }
+  
     const nameArray = name.split(' ');
     const firstNameInitial = nameArray[0]?.charAt(0).toUpperCase();
     const lastNameInitial = nameArray.length > 1 ? nameArray[nameArray.length - 1]?.charAt(0).toUpperCase() : '';
@@ -85,16 +91,16 @@ const Navbar = () => {
             >
               {/* If user has an image, show it, else show initials */}
               {user.image ? (
-                <img
-                  className="w-full h-full object-cover"
-                  src={user.image}
-                  alt="user"
-                />
-              ) : (
-                <span className="text-white text-lg font-semibold ">
-                  {getInitials(user.name)}
-                </span>
-              )}
+    <img
+      className="w-full h-full object-cover"
+      src={user.image}
+      alt="user"
+    />
+  ) : (
+    <span className="text-white text-lg font-semibold">
+      {getInitials(user.name, user.email)} {/* Pass both name and email */}
+    </span>
+  )}
             </div>
 
             {/* User Card Popup (Position it correctly) */}
