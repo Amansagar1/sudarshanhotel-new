@@ -2,12 +2,12 @@
 import React from 'react';
 import Image from "next/image";
 import cardData from "./Roomdetails.json"; 
-import cardImage1 from "../../Components/Assets/img1.jpg";
-import cardImage2 from "../../Components/Assets/img2.jpg";
-import cardImage3 from "../../Components/Assets/img3.jpg";
+import cardImage1 from "/public/images/img1.jpg";
+import cardImage2 from "/public/images/img2.jpg";
+import cardImage3 from "/public/images/img3.jpg";
 
 // Background Image
-import backgroundImage from "../../Components/Assets/logo (1).png";
+import backgroundImage from "/public/images/logo.png";
 
 const RoomsSuites = () => {
   const images = [cardImage1, cardImage2, cardImage3];

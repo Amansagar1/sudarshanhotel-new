@@ -4,9 +4,9 @@ import { useState, useEffect } from "react";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 
 // Images for the carousel
-import bgImage1 from "../../Components/Assets/img1.jpg";
-import bgImage2 from "../../Components/Assets/img2.jpg";
-import bgImage3 from "../../Components/Assets/img3.jpg";
+import bgImage1 from "/public/images/img1.jpg";
+import bgImage2 from "/public/images/img2.jpg";
+import bgImage3 from "/public/images/img3.jpg";
 
 const images = [bgImage1, bgImage2, bgImage3];
 

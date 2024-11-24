@@ -4,9 +4,9 @@ import Image from "next/image";
 import { FaFacebookF, FaLinkedinIn, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 
 import Link from "next/link";
-import UPI from "../Assets/PaymentLogo/google-pay-logo-transparent-free-png.png"
-import PhonepayUPI from "../Assets/PaymentLogo/phonepe-logo-C4BD70AF79-seeklogo.com.png"
-import PaytmUPI from "../Assets/PaymentLogo/paytm-icon.png"
+import UPI from "/public/images/PaymentLogo/google-pay-logo-transparent-free-png.png"
+import PhonepayUPI from "/public/images/PaymentLogo/phonepe-logo-C4BD70AF79-seeklogo.com.png"
+import PaytmUPI from "/public/images/PaymentLogo/paytm-icon.png"
 
 const Footer = () => {
   const [year, setYear] = useState(new Date().getFullYear());

@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from 'react';
 import Image from "next/image";
-import SideImage from "../Assets/img3.jpg"; // Image for About Section
+import SideImage from "/public/images/front.jpg"; // Image for About Section
 
 const AboutHotel = () => {
   const [isMounted, setIsMounted] = useState(false);

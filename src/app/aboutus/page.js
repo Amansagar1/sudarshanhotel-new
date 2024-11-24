@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import teamMembers from "./teamMembers.json";
 import clientFeedback from "./clientFeedback.json";
-import SideImage from "../../components/Assets/img4.jpg";
+import SideImage from "/public/images/img4.jpg";
 
 const Aboutus = () => {
   const [isMounted, setIsMounted] = useState(false);

@@ -5,7 +5,7 @@ import Image from "next/image";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
-import loginimg from "../../components/Assets/img3.jpg";
+import loginimg from "/public/images/img3.jpg";
 
 const LoginPage = () => {
   const router = useRouter();

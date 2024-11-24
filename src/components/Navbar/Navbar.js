@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from "next/image";
 import Link from 'next/link';
-import BrandLogo from "../Assets/logo (1).png";
+import BrandLogo from "/public/images/logo.png";
 import navLinks from "./Navbar.json";
 import UserCard from './UserCard';
 import { useSession } from 'next-auth/react'; // Importing useSession
