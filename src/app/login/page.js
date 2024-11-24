@@ -5,7 +5,7 @@ import Image from "next/image";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
-import loginimg from "/public/images/img3.jpg";
+
 
 const LoginPage = () => {
   const router = useRouter();
@@ -271,7 +271,7 @@ const LoginPage = () => {
             )}
           </button>
 
-          <div className="mt-10 text-sm border-b border-gray-500 py-5">
+          <div className="mt-10 text-sm border-b border-gray-500 py-5 flex items-center justify-center">
             <button
               className="text-[#002D74] hover:underline"
               onClick={() => setIsSignUp(!isSignUp)}
@@ -283,7 +283,9 @@ const LoginPage = () => {
 
         <div className="md:block hidden w-1/2">
           <Image
-            src={loginimg}
+            src='/images/img3.jpg'
+            width={500}
+            height={400}
             className="rounded-2xl max-h-[1600px]"
             alt="login form image"
           />

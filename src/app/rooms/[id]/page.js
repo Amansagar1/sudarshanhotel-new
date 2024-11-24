@@ -6,12 +6,26 @@ import {  FaKey, FaSwimmer } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
 import BookingModal from "../../../components/RoomBooking/BookingPopup"
+import {useRouter  } from "next/navigation"
 const RoomDetailsPage = () => {
   const [room, setRoom] = useState(null);
   const [error, setError] = useState(null);
   const { id } = useParams(); // Get room id from params
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [showModal, setShowModal] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false); // Track authentication
+  const router = useRouter();
+
+
+  useEffect(() => {
+    // Check if user is authenticated (replace with actual auth logic)
+    const checkAuth = async () => {
+      const session = await fetch("/api/auth/session").then((res) => res.json());
+      setIsAuthenticated(session?.user ? true : false);
+    };
+
+    checkAuth()});
+
   useEffect(() => {
     const fetchRoomDetails = async () => {
       try {
@@ -53,8 +67,13 @@ const RoomDetailsPage = () => {
   };
  
   const handleBookNow = () => {
-    setShowModal(true); // Show the modal when Book Now is clicked
+    if (!isAuthenticated) {
+      router.push("/login"); // Redirect to login page if not authenticated
+    } else {
+      setShowModal(true); // Show the modal when authenticated
+    }
   };
+
 
   const handleCloseModal = () => {
     setShowModal(false); // Close the modal
@@ -112,7 +131,7 @@ const RoomDetailsPage = () => {
     <div className="font-sans w-full">
       <div
         className="h-[400px] bg-cover bg-center text-white flex flex-col justify-center items-center"
-        style={{ backgroundImage: "url('/images/img1.jpg')" }}
+        style={{ backgroundImage: "url('/images/img6.jpg')" }}
       >
         <h1 className="text-4xl font-bold">Room Details</h1>
         <div>
@@ -131,7 +150,7 @@ const RoomDetailsPage = () => {
           {/* Left Side: Image Carousel */}
           <div className="relative w-full md:w-1/2 bg-gray-200">
             <Image
-              src={images[currentImageIndex] || "/images/img4.jpg"} // Add a fallback image
+              src={images[currentImageIndex] || "/images/fallback-image.jpg"} // Add a fallback image
               alt="Room Image"
               className="w-full h-full object-cover rounded-l-lg"
               layout="fill"
