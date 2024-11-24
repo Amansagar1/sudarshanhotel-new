@@ -125,7 +125,7 @@ const RoomPage = () => {
       {/* Top Section with Title */}
       <div
         className="h-[400px] bg-cover bg-center text-white flex flex-col justify-center items-center"
-        style={{ backgroundImage: "url('/images/WhatsApp Image 2024-11-05 at 20.44.16_5e94e5d3.jpg')" }}
+        style={{ backgroundImage: "url('/images/img2.jpg')" }}
       >
         <h1 className="text-4xl font-bold">Rooms & Suites</h1>
         <div>
@@ -186,7 +186,7 @@ const RoomPage = () => {
                   {/* Room Image */}
                   <div className="w-full md:w-1/3">
                     <Image
-                      src={room.image || '/images/WhatsApp Image 2024-11-05 at 20.44.17_10df680e.jpg'} // Fallback if no image is provided
+                      src={room.image || '/images/img1.jpg'} // Fallback if no image is provided
                       alt={room.title}
                       width={500}
                       height={300}

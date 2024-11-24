@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from "next/image";
 import Link from 'next/link';
-import BrandLogo from "../Assets/WhatsApp_Image_2024-11-05_at_21.13.36_d4644e5a-removebg-preview.png";
+import BrandLogo from "../Assets/logo (1).png";
 import navLinks from "./Navbar.json";
 import UserCard from './UserCard';
 import { useSession } from 'next-auth/react'; // Importing useSession
@@ -56,7 +56,7 @@ const Navbar = () => {
   const user = session?.user || {
     name: 'Guest User',
     email: 'guest@example.com',
-    image: '',
+    image: '/images/img3.jpg',
   };
 
   return (
@@ -70,6 +70,7 @@ const Navbar = () => {
               width={160}
               height={160}
               alt="brand logo"
+           
             />
           </div>
 

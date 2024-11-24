@@ -53,7 +53,7 @@ export default NextAuth({
         if (isSignUp) {
           const existingUser = await getUserByEmail(email);
           if (existingUser) {
-            throw new Error('User already exists'); // Provide an error for duplicate users
+            throw new Error('User already exists'); 
           }
 
           const hashedPassword = await hashPassword(password);

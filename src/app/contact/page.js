@@ -2,12 +2,12 @@
 import React from 'react';
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
 import Link from 'next/link';
-import Image from 'next/image';
+// import Image from 'next/image';
 const ContactUs = () => {
   return (
     <div className="flex flex-col items-center w-full justify-center bg-yellow-50">
       {/* Image Banner */}
-      <div className="w-full h-[400px] bg-cover bg-center " style={{ backgroundImage: "url('/images/WhatsApp Image 2024-11-05 at 20.44.17_10df680e.jpg')" }}>
+      <div className="w-full h-[400px] bg-cover bg-center " style={{ backgroundImage: "url('/images/img4.jpg')" }}>
       <div className="w-full h-full bg-black bg-opacity-50 flex items-center justify-center flex-col text-white">
         <h1 className="text-4xl font-bold">Contact Us</h1>
         <div className="">

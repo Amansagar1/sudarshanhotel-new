@@ -73,7 +73,7 @@ const BookingModal = ({ isVisible, onClose, roomDetails }) => {
           <div
             className="bg-black bg-opacity-50 h-full flex items-center justify-center text-white text-2xl font-semibold"
             style={{
-              backgroundImage: "url('/images/WhatsApp Image 2024-11-05 at 20.44.16_5e94e5d3.jpg')",
+              backgroundImage: "url('/images/img4.jpg')",
               backgroundSize: 'cover',
               backgroundRepeat: 'no-repeat',
               backgroundPosition: 'center',

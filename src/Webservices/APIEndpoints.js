@@ -12,6 +12,7 @@ const EndPoints = {
 
     BOOKING_ROOMS: () => `http://localhost:5000/api/book`,
 
+  UPDATE_ROOM_STATUS: (roomId) => `http://localhost:5000/api/roomdetails/:${roomId}/status/update`
 
 };
 

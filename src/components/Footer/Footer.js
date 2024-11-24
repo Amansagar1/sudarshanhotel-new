@@ -25,7 +25,7 @@ const Footer = () => {
              Hotel  <span className="text-rose-600">Sudarshan</span>
             </h1>
             <p className="mt-[18px] text-[15px] font-normal text-white/[80%]">
-              Welcome to Hotel Sudarshan, a place where luxury meets comfort. Enjoy a unique experience tailored for your every need. Whether it's our world-class amenities, rooms, or services, we are here to offer the best stay in town.
+              Welcome to Hotel Sudarshan, a place where luxury meets comfort. Enjoy a unique experience tailored for your every need. Whether it&apos;s our world-class amenities, rooms, or services, we are here to offer the best stay in town.
             </p>
             <div className="mt-[18px] flex gap-4">
               {/* Social Media Links */}

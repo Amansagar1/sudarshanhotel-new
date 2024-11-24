@@ -4,9 +4,9 @@ import { useState, useEffect } from "react";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 
 // Images for the carousel
-import bgImage1 from "../../Components/Assets/WhatsApp Image 2024-11-05 at 20.44.16_171296f5.jpg";
-import bgImage2 from "../../Components/Assets/WhatsApp Image 2024-11-05 at 20.44.16_37e156be.jpg";
-import bgImage3 from "../../Components/Assets/WhatsApp Image 2024-11-05 at 20.44.16_ebb71bb3.jpg";
+import bgImage1 from "../../Components/Assets/img1.jpg";
+import bgImage2 from "../../Components/Assets/img2.jpg";
+import bgImage3 from "../../Components/Assets/img3.jpg";
 
 const images = [bgImage1, bgImage2, bgImage3];
 
