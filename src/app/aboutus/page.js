@@ -56,7 +56,7 @@ const Aboutus = () => {
             Hotel Sudarshan - Best Luxury Stay in Ayodhya, INDIA
           </h2>
           <p className="text-gray-600 mb-8">
-            Located in the heart of Ayodhya, Hotel Sudarshan offers the finest in luxury, comfort, and exceptional hospitality. With world-class amenities, expansive rooms, and impeccable service, we ensure every guest feels at home during their stay. Whether you're here for business or leisure, Hotel Sudarshan provides an unforgettable experience with breathtaking views and exquisite dining.
+            Located in the heart of Ayodhya, Hotel Sudarshan offers the finest in luxury, comfort, and exceptional hospitality. With world-class amenities, expansive rooms, and impeccable service, we ensure every guest feels at home during their stay. Whether you&apos;re here for business or leisure, Hotel Sudarshan provides an unforgettable experience with breathtaking views and exquisite dining.
           </p>
           <div className="flex items-center mb-8">
             <div className="mr-12 text-center">

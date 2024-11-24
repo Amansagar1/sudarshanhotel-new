@@ -12,7 +12,7 @@ const Navbar = () => {
   const [navbarBg, setNavbarBg] = useState('bg-transparent');
   const [userCardOpen, setUserCardOpen] = useState(false); // User card toggle state
 
-  const { data: session, status } = useSession(); // Get session data
+  const { data: session } = useSession(); // Get session data
 
   useEffect(() => {
     const handleScroll = () => {

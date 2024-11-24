@@ -1,7 +1,7 @@
 "use client"
 import React, { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
-import { getRoomDetailsById,checkRoomStatus } from "../../../Webservices/ManagementAPIController"; // Updated function name
+import { getRoomDetailsById } from "../../../Webservices/ManagementAPIController"; // Updated function name
 import {  FaKey, FaSwimmer } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";

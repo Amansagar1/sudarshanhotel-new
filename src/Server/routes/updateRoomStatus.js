@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 const cron = require('node-cron');
 const Room = require('../models/RoomDetails'); // Adjust the path based on your project structure
 
