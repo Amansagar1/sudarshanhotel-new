@@ -3,12 +3,10 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 
-// Images for the carousel
-import bgImage1 from "/public/images/img1.jpg";
-import bgImage2 from "/public/images/img2.jpg";
-import bgImage3 from "/public/images/img3.jpg";
+// Import carousel images JSON
+import carouselImages from "./carouselImages.json"; // Adjust the path accordingly
 
-const images = [bgImage1, bgImage2, bgImage3];
+const images = carouselImages.images;
 
 export default function HomePage() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -39,8 +37,8 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-black opacity-25 z-10"></div>
 
         <Image
-          src={images[currentIndex]}
-          alt={`Slide ${currentIndex + 1}`}
+          src={images[currentIndex].src}
+          alt={images[currentIndex].alt}
           layout="fill"
           objectFit="cover"
           className="w-full h-full fade-animation" // Added fade-animation class for smooth image transitions

@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import teamMembers from "./teamMembers.json";
 import clientFeedback from "./clientFeedback.json";
-import SideImage from "/public/images/img4.jpg";
+
 
 const Aboutus = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -38,8 +38,10 @@ const Aboutus = () => {
           <div className="bg-yellow-600 w-[550px] h-[576px] shadow-lg">
             <div className="absolute p-6 w-[600px]">
               <Image
-                src={SideImage}
+                src="/images/img4.jpg"
                 alt="Luxury Hotel Room"
+               width={400}
+               height={400}
                 className="shadow-lg w-full object-cover"
               />
             </div>

@@ -4,9 +4,6 @@ import Image from "next/image";
 import { FaFacebookF, FaLinkedinIn, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 
 import Link from "next/link";
-import UPI from "/public/images/PaymentLogo/google-pay-logo-transparent-free-png.png"
-import PhonepayUPI from "/public/images/PaymentLogo/phonepe-logo-C4BD70AF79-seeklogo.com.png"
-import PaytmUPI from "/public/images/PaymentLogo/paytm-icon.png"
 
 const Footer = () => {
   const [year, setYear] = useState(new Date().getFullYear());
@@ -65,12 +62,10 @@ const Footer = () => {
           <div className="md:w-[316px] p-4">
             <h4 className="font-semibold text-white">Quick Links</h4>
             <ul className="mt-4 space-y-2 text-white/[80%]">
-              <li><a href="/about-us" className="hover:text-rose-600">About Us</a></li>
-              <li><a href="/rooms" className="hover:text-rose-600">Rooms</a></li>
-              <li><a href="/amenities" className="hover:text-rose-600">Amenities</a></li>
-              <li><a href="/contact-us" className="hover:text-rose-600">Contact Us</a></li>
-              <li><a href="/booking" className="hover:text-rose-600">Booking</a></li>
-              <li><a href="/gallery" className="hover:text-rose-600">Gallery</a></li>
+              <li><Link href="/aboutus" className="hover:text-rose-600">About Us</Link></li>
+              <li><Link href="/rooms" className="hover:text-rose-600">Rooms</Link></li>
+              <li><Link href="/amenities" className="hover:text-rose-600">Amenities</Link></li>
+              <li><Link href="/contact" className="hover:text-rose-600">Contact Us</Link></li>
             </ul>
           </div>
 
@@ -79,13 +74,13 @@ const Footer = () => {
             <h4 className="font-semibold text-white">Payment Method</h4>
             <div className="flex gap-4 mt-4">
               <Link href="/" className="flex items-center justify-center  bg-white p-2">
-                <Image src={UPI} alt="Google Play" width="135" className=" " />
+                <Image src="/images/PaymentLogo/googlepay.png" alt="Google Play" width="135" height={135} className=" " />
               </Link>
               <Link href="/" className="flex items-center justify-center bg-white p-2">
-                <Image src={PhonepayUPI} alt="Apple Store" width="135" className=""/>
+                <Image src="/images/PaymentLogo/phonepay.png" alt="Apple Store" width="135" height={135} className=""/>
               </Link>
               <Link href="/" className="flex items-center justify-center  bg-white p-2">
-                <Image src={PaytmUPI} alt="Apple Store" width="135" className="" />
+                <Image src="/images/PaymentLogo/paytm.png" alt="Apple Store" width="135" height={135} className="" />
               </Link>
             </div>
           </div>

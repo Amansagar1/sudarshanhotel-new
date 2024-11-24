@@ -1,23 +1,18 @@
 "use client";
 import React from 'react';
 import Image from "next/image";
-import cardData from "./Roomdetails.json"; 
-import cardImage1 from "/public/images/img1.jpg";
-import cardImage2 from "/public/images/img2.jpg";
-import cardImage3 from "/public/images/img3.jpg";
+import cardData from "./Roomdetails.json"; // Import the JSON data
 
 // Background Image
-import backgroundImage from "/public/images/logo.png";
+
 
 const RoomsSuites = () => {
-  const images = [cardImage1, cardImage2, cardImage3];
-
   return (
     <div className="relative w-full min-h-screen flex items-center justify-center bg-[#ffa6005d] p-4 md:p-8 lg:p-12">
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
-          src={backgroundImage}
+          src='/images/logo.png'
           alt="Background"
           layout="fill"
           objectFit="cover"
@@ -41,13 +36,12 @@ const RoomsSuites = () => {
           {cardData.map((card, index) => (
             <Card
               key={index}
-              image={images[index]}
+              image={card.image}  // Use image from JSON data
               title={card.title}
               description={card.description}
               price={card.price}
               beds={card.beds}
               rating={card.rating}
-              index={index}
             />
           ))}
         </div>
@@ -64,7 +58,7 @@ const Card = ({ image, title, description, price, beds, rating }) => {
       <div className="relative w-full h-48 md:h-64 overflow-hidden group">
         <div className="absolute inset-0 transform group-hover:scale-110 transition-transform duration-500">
           <Image
-            src={image}
+            src={image}  // Render image passed from props
             alt={title}
             layout="fill"
             objectFit="cover"

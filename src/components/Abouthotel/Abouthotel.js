@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from 'react';
 import Image from "next/image";
-import SideImage from "/public/images/front.jpg"; // Image for About Section
+
 
 const AboutHotel = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -19,9 +19,11 @@ const AboutHotel = () => {
         <div className="bg-yellow-600 w-[550px] h-[576px] shadow-lg">
           <div className="absolute p-6 w-[600px]">
             <Image
-              src={SideImage}
+              src="/images/front.jpg"
               alt="Luxury Hotel Room"
               className="shadow-lg w-full object-cover"
+              width={400}
+              height={200}
             />
           </div>
         </div>
