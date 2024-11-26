@@ -7,100 +7,82 @@
       { "label": "Amenities", "url": "/amenities" }
     ]
   },
+  "roomTypes": [
+    {
+      "id": 1,
+      "name": "Deluxe Room",
+      "price": "3800",
+      "occupancy": "Max 2 guests",
+      "size": "150 sq ft",
+      "description": "Comfortable and well-furnished with a double bed, ideal for a relaxing stay."
+    },
+    {
+      "id": 2,
+      "name": "Super Deluxe Room",
+      "price": "4600",
+      "occupancy": "Max 3 guests",
+      "size": "180 sq ft",
+      "description": "Spacious with modern amenities and great comfort for small families or groups."
+    },
+    {
+      "id": 3,
+      "name": "Family Room",
+      "price": "5800",
+      "occupancy": "Max 5 guests",
+      "size": "250 sq ft",
+      "description": "Perfect for larger families with both double and single beds."
+    }
+  ],
+  "amenitiesSection": {
+    "title": "Hotel Amenities",
+    "amenities": [
+      { "id": 1, "name": "Free Wi-Fi", "description": "High-speed internet access throughout the hotel.", "icon": "wifi" },
+      { "id": 2, "name": "Parking", "description": "Complimentary secure parking available.", "icon": "parking" },
+      { "id": 3, "name": "Room Service", "description": "24-hour room service for dining in the comfort of your room.", "icon": "room_service" }
+    ]
+  },
   "diningOptionsSection": {
-    "title": "Dining Experiences",
+    "title": "Dining Options",
     "diningOptions": [
       {
         "id": 1,
-        "title": "Themed Sunday Brunches",
-        "description": "Exquisite brunch crafted by world-renowned chefs.",
-        "timing": "12 PM - 4 PM",
-        "location": "Seven Kitchens"
+        "title": "Restaurant One",
+        "description": "A fine-dining experience with international cuisine.",
+        "timing": "6:00 AM - 10:00 PM",
+        "location": "Ground Floor"
       },
       {
         "id": 2,
-        "title": "St. Regis Afternoon Tea Ritual",
-        "description": "Enjoy classic and contemporary tea time treats.",
-        "timing": "3 PM - 5 PM",
-        "location": "The Drawing Room"
+        "title": "Cafe Lounge",
+        "description": "A casual lounge for snacks and beverages.",
+        "timing": "9:00 AM - 11:00 PM",
+        "location": "First Floor"
+      },
+      {
+        "id": 3,
+        "title": "Party Hall",
+        "description": "A vibrant space designed for casual gatherings and celebrations. .",
+        "timing": "9:00 AM - 11:00 PM",
+        "location": "First Floor"
       }
     ]
   },
   "restaurantsSection": {
-    "title": "Restaurants at This Hotel",
+    "title": "Our Restaurants",
     "restaurants": [
       {
         "id": 1,
-        "name": "Kohitsuji",
-        "description": "Modern Asian cuisine with a touch of luxury.",
-        "timing": "12 PM - 3 PM, 7 PM - 10 PM",
-        "openDays": "Mon-Sat"
+        "name": "The Gourmet Table",
+        "description": "A luxurious experience with signature dishes.",
+        "timing": "12:00 PM - 11:00 PM",
+        "openDays": "All Days"
       },
       {
         "id": 2,
-        "name": "Koi Bar",
-        "description": "Beautiful sea view and diverse cocktails.",
-        "timing": "5 PM - 1 AM",
-        "openDays": "Mon-Sun"
-      }
-    ]
-  },
-  "amenitiesSection": {
-    "title": "Hotel Amenities",
-    "amenities": [
-      {
-        "id": 1,
-        "name": "Free Wi-Fi",
-        "description": "High-speed internet access available throughout the hotel.",
-        "icon": "wifi"
-      },
-      {
-        "id": 2,
-        "name": "Parking",
-        "description": "Complimentary secure parking available for all guests.",
-        "icon": "parking"
-      },
-      {
-        "id": 3,
-        "name": "Air Conditioning",
-        "description": "All rooms are fully air-conditioned for a comfortable stay.",
-        "icon": "ac_unit"
-      },
-      {
-        "id": 4,
-        "name": "Laundry Service",
-        "description": "On-site laundry and dry-cleaning services available.",
-        "icon": "local_laundry_service"
-      },
-      {
-        "id": 5,
-        "name": "24/7 Room Service",
-        "description": "Round-the-clock room service to meet all your needs.",
-        "icon": "room_service"
-      },
-      {
-        "id": 6,
-        "name": "Restaurant",
-        "description": "In-house dining with a selection of gourmet dishes.",
-        "icon": "restaurant"
-      },
-      {
-        "id": 7,
-        "name": "Spa and Wellness Center",
-        "description": "Relax and rejuvenate at our spa and wellness center.",
-        "icon": "spa"
-      },
-      {
-        "id": 8,
-        "name": "Swimming Pool",
-        "description": "Outdoor pool with a seating area and poolside service.",
-        "icon": "pool"
-      },
-      {
-        "id": 9,
-        "name": "Fitness Center",
-        "description": "Fully equipped fitness center for guests to stay active.",
-        "icon": "fitness_center"
+        "name": "Sea Breeze",
+        "description": "A seaside restaurant offering fresh seafood.",
+        "timing": "10:00 AM - 10:00 PM",
+        "openDays": "All Days"
       }
     ]
   }

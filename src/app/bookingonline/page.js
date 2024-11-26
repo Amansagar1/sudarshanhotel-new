@@ -24,7 +24,7 @@ const BookingOnline = () => {
       {/* Hero Section */}
       <div className="bg-cover bg-center h-[400px] w-full flex  items-center justify-center text-center text-white relative" style={{ backgroundImage: `url('${bookingData.heroSection.backgroundImage}')` }}>
         <div className="w-full h-full bg-black bg-opacity-50 flex items-center justify-center flex-col">
-          <h1 className="text-4xl font-bold">{bookingData.heroSection.title}</h1>
+          <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">{bookingData.heroSection.title}</h1>
         </div>
       </div>
 

@@ -337,7 +337,7 @@ const BookingModal = ({ isVisible, onClose, roomDetails }) => {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 ">
-      <div className="bg-white rounded-lg shadow-xl w-[90%] max-w-2xl overflow-scroll h-[600px]">
+      <div className="bg-white rounded-lg shadow-xl   p-5">
         {/* Header */}
         <div
           className="h-48 bg-cover bg-center relative"
@@ -351,7 +351,7 @@ const BookingModal = ({ isVisible, onClose, roomDetails }) => {
         </div>
 
         {/* Form Section */}
-        <div className="p-6">
+        <div className="p-6 overflow-scroll">
           {!isBooked ? (
             <form onSubmit={handleSubmit} className="space-y-4">
               {/* Personal Details */}

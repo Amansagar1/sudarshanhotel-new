@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import teamMembers from "./teamMembers.json";
@@ -15,12 +15,16 @@ const Aboutus = () => {
   if (!isMounted) return null;
 
   return (
-    <div className="flex flex-col items-center w-full justify-center bg-[#ffa6005d]">
+    <div className="font-sans bg-gray-50">
       {/* Banner Section */}
-      <div className="w-full h-[400px] bg-cover bg-center" style={{ backgroundImage: "url('/images/img5.jpg')" }}>
-        <div className="w-full h-full bg-black bg-opacity-50 flex items-center justify-center flex-col text-white">
-          <h1 className="text-4xl font-bold">About Us</h1>
-          <div className="">
+      <div
+        className="relative bg-cover bg-center h-[400px] flex items-center justify-center text-center text-white"
+        style={{ backgroundImage: `url('/images/img5.jpg')` }}
+      >
+        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+        <div className="relative z-10 w-full max-w-5xl mx-auto p-4">
+          <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">About Us</h1>
+          <div className="text-lg mt-4">
             <Link href="/" passHref>
               <span className="text-lg mt-2">Home /</span>
             </Link>
@@ -32,59 +36,88 @@ const Aboutus = () => {
       </div>
 
       {/* Hotel Introduction Section */}
-      <div className="flex flex-col md:flex-row items-center justify-center  py-16 bg-white gap-8 md:gap-16 border-b-2 m-5 w-full">
-  {/* Image Section */}
-  <div className="relative flex items-center justify-center mb-8 md:mb-0 w-full md:w-[550px]">
-    <div className="bg-yellow-600 w-full md:w-[550px] h-[350px] md:h-[576px] shadow-lg">
-      <div className="absolute p-6 w-full h-full">
-        <Image
-          src="/images/img4.jpg"
-          alt="Luxury Hotel Room"
-          width={400}
-          height={400}
-          className="shadow-lg w-full h-full object-cover"
-        />
-      </div>
-    </div>
-  </div>
+      <div className="flex flex-col md:flex-row items-center justify-center py-16 bg-white gap-8 md:gap-16 border-b-2 m-5  ">
+        {/* Image Section */}
+        <div className="relative flex items-center justify-center mb-8 md:mb-0 w-full md:w-[550px]">
+          <Image
+            src="/images/img4.jpg"
+            alt="Luxury Hotel Room"
+            width={550}
+            height={400}
+            className="rounded-lg shadow-lg w-full h-auto object-cover"
+          />
+        </div>
 
-  {/* Text Section */}
-  <div className="text-center md:text-left w-full md:w-[550px]">
-    <p className="text-sm text-gray-500 uppercase tracking-wider mb-2">
-      Luxury Hotel and Resort
-    </p>
-    <h2 className="text-2xl md:text-4xl font-semibold text-gray-800 mb-4">
-      Hotel Sudarshan - Best Luxury Stay in Ayodhya, INDIA
-    </h2>
-    <p className="text-gray-600 mb-8">
-      Located in the heart of Ayodhya, Hotel Sudarshan offers the finest in luxury, comfort, and exceptional hospitality. With world-class amenities, expansive rooms, and impeccable service, we ensure every guest feels at home during their stay. Whether you&apos;re here for business or leisure, Hotel Sudarshan provides an unforgettable experience with breathtaking views and exquisite dining.
-    </p>
-    <div className="flex flex-col md:flex-row items-center justify-center gap-8 mb-8">
-      <div className="mr-12 text-center md:text-left">
-        <span className="text-4xl font-semibold text-gold">17+</span>
-        <p className="text-gray-500">Luxury Rooms</p>
+        {/* Text Section */}
+        <div className="text-center md:text-left w-full md:w-[550px]">
+          <p className="text-sm text-gray-500 uppercase tracking-wider mb-2">
+            Luxury Hotel and Resort
+          </p>
+          <h2 className="text-2xl md:text-4xl font-semibold text-gray-800 mb-4">
+            Hotel Sudarshan - Best Luxury Stay in Ayodhya, INDIA
+          </h2>
+          <p className="text-gray-600 mb-8">
+            Located in the heart of Ayodhya, Hotel Sudarshan offers luxurious accommodations with world-class amenities. With spacious rooms, exquisite dining, and impeccable hospitality, we aim to make every guest&apos;s stay unforgettable. Whether you&apos;re here for business or leisure, experience the perfect blend of comfort and elegance.
+          </p>
+          <div className="flex flex-col md:flex-row items-center justify-center gap-8 mb-8">
+            <div className="text-center">
+              <span className="text-4xl font-semibold text-yellow-600">17+</span>
+              <p className="text-gray-500">Luxury Rooms</p>
+            </div>
+            <div className="text-center">
+              <span className="text-4xl font-semibold text-yellow-600">4.9</span>
+              <p className="text-gray-500">Customer Ratings</p>
+            </div>
+          </div>
+          <button className="px-6 py-2 bg-yellow-600 text-white font-semibold rounded hover:bg-yellow-700 transition duration-300">
+            More About
+          </button>
+        </div>
       </div>
-      <div className="text-center md:text-left">
-        <span className="text-4xl font-semibold text-gold">4.9</span>
-        <p className="text-gray-500">Customer Ratings</p>
+
+      {/* Room Information Section */}
+      <div className="bg-gray-100 py-16">
+        <h3 className="text-3xl font-semibold text-center mb-6">Room Types & Details</h3>
+        <div className="flex flex-wrap justify-center gap-8">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-full md:w-[400px]">
+            <h4 className="text-xl font-semibold mb-4">Deluxe Room</h4>
+            <p className="text-gray-700 mb-4">
+              Max 2 Guests | 150 sq ft | ₹3800 + 18% GST (Total: ₹4484)
+            </p>
+            <p className="text-gray-600">
+              Overlooking the airport, these air-conditioned rooms come with a double bed, 2-seater sofa, tea/coffee maker, and modern bathroom amenities. 24-hour room service is available.
+            </p>
+          </div>
+          <div className="bg-white p-6 rounded-lg shadow-lg w-full md:w-[400px]">
+            <h4 className="text-xl font-semibold mb-4">Super Deluxe Room</h4>
+            <p className="text-gray-700 mb-4">
+              Max 3 Guests | 180 sq ft | ₹4600 + 18% GST (Total: ₹5428)
+            </p>
+            <p className="text-gray-600">
+              Spacious and serene, this room offers a double bed, seating area, and blackout curtains. Amenities include a smart TV, 24-hour room service, and air conditioning.
+            </p>
+          </div>
+          <div className="bg-white p-6 rounded-lg shadow-lg w-full md:w-[400px]">
+            <h4 className="text-xl font-semibold mb-4">Family Room</h4>
+            <p className="text-gray-700 mb-4">
+              Max 5 Guests | 250 sq ft | ₹5800 + 18% GST (Total: ₹6844)
+            </p>
+            <p className="text-gray-600">
+              Perfect for families, this room includes a double bed, single bed, and a cozy seating area. Modern amenities ensure a comfortable and enjoyable stay.
+            </p>
+          </div>
+        </div>
       </div>
-    </div>
-    <button className="px-6 py-2 bg-yellow-600 text-white font-semibold rounded hover:bg-yellow-700 transition duration-300">
-      More About
-    </button>
-  </div>
-</div>
 
-
-      {/* Team Members Section */}
+      {/* Remaining Sections */}
       <div className="py-16">
         <h3 className="text-3xl font-semibold text-center mb-6">Meet the Expert Members</h3>
         <p className="text-center text-gray-600 mb-12">
-          Our team is committed to providing each guest with a warm welcome and exceptional service to ensure a delightful stay.
+          Our dedicated team ensures every guest has a memorable stay.
         </p>
         <div className="flex flex-wrap justify-center gap-8">
           {teamMembers.map((member, index) => (
-            <div key={index} className="flex flex-col items-center">
+            <div key={index} className="text-center">
               <Image
                 src={member.image}
                 alt={member.name}
@@ -100,11 +133,11 @@ const Aboutus = () => {
       </div>
 
       {/* Client Feedback Section */}
-      <div className="bg-gray-100 py-16 w-full">
+      <div className="bg-gray-100 py-16">
         <h3 className="text-3xl font-semibold text-center mb-6">Client Feedback</h3>
-        <div className="flex flex-wrap justify-center gap-6">
+        <div className="flex flex-wrap justify-center gap-8">
           {clientFeedback.map((feedback, index) => (
-            <div key={index} className="p-6 bg-white shadow-lg rounded-lg text-center w-[300px] md:w-[350px]">
+            <div key={index} className="p-6 bg-white shadow-lg rounded-lg text-center w-full md:w-[350px]">
               <p className="text-yellow-500 mb-2">
                 {"★".repeat(feedback.rating)}{"☆".repeat(5 - feedback.rating)}
               </p>
@@ -113,47 +146,6 @@ const Aboutus = () => {
               <p className="text-sm text-gray-500">{feedback.location}</p>
             </div>
           ))}
-        </div>
-      </div>
-
-      {/* Mission, Vision, and Values Section */}
-      <div className="w-full px-6 md:px-10 py-16 shadow-md text-center">
-        <h3 className="text-3xl font-semibold mb-6">Our Mission, Vision, and Values</h3>
-        <p className="text-gray-600 mb-8">
-          At Hotel Sudarshan, our mission is to provide exceptional hospitality with personalized service to each guest, ensuring they feel at home. Our vision is to be the preferred luxury hotel in Ayodhya, recognized for quality and unique guest experiences. We value integrity, respect, and dedication to quality in all aspects of our service.
-        </p>
-        <div className="flex flex-col md:flex-row justify-center gap-12">
-          <div className="bg-white p-8 rounded-lg shadow-md w-[300px] md:w-[350px]">
-            <h4 className="text-xl font-semibold mb-4">Our Mission</h4>
-            <p className="text-gray-600">
-              To offer a unique blend of luxury, comfort, and cultural heritage, ensuring every guest enjoys a memorable experience with our exceptional services.
-            </p>
-          </div>
-          <div className="bg-white p-8 rounded-lg shadow-md w-[300px] md:w-[350px]">
-            <h4 className="text-xl font-semibold mb-4">Our Vision</h4>
-            <p className="text-gray-600">
-              To be a leader in hospitality, creating a trusted brand known for its commitment to high-quality service and customer satisfaction.
-            </p>
-          </div>
-          <div className="bg-white p-8 rounded-lg shadow-md w-[300px] md:w-[350px]">
-            <h4 className="text-xl font-semibold mb-4">Our Values</h4>
-            <p className="text-gray-600">
-              Respect, integrity, and a dedication to excellence are at the heart of our operations, guiding us in every interaction with our guests and team.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Additional Information */}
-      <div className="w-full px-6 md:px-10 py-16 bg-gray-900 text-white text-center">
-        <h3 className="text-3xl font-semibold p-4 text-white">A Rich Legacy of Hospitality</h3>
-        <div className="flex flex-wrap gap-10 p-4 justify-center items-center w-full">
-          <p className="text-white w-full md:w-1/2">
-            Established to create a sanctuary of comfort and refinement, Sudarshan Hotel has earned a reputation for excellence in the hospitality industry. From our elegant rooms to our top-tier amenities, every element of our hotel has been designed to provide guests with an extraordinary experience.
-          </p>
-          <p className="text-white w-full md:w-1/2">
-            Experience our premium services, including a world-class restaurant, an inviting lounge, and personalized concierge assistance. Our rooms are designed with both luxury and practicality in mind, ensuring that every stay with us is as comfortable as it is memorable.
-          </p>
         </div>
       </div>
     </div>
