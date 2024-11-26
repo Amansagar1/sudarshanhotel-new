@@ -3,7 +3,6 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import GoogleProvider from 'next-auth/providers/google';
 import { getUserByEmail, createUser, hashPassword, verifyPassword } from '../../../lib/db';
 
-// Define the User type
 type User = {
   id: string;
   email: string;
@@ -25,15 +24,13 @@ export default NextAuth({
       async authorize(credentials): Promise<User | null> {
         const { email, password, fullName, mobileNumber, isSignUp } = credentials || {};
 
-        if (!email || !password) {
-          return null;
+        if (!email || !password || (isSignUp && !fullName)) {
+          throw new Error('Invalid input');
         }
 
         if (isSignUp) {
           const existingUser = await getUserByEmail(email);
-          if (existingUser) {
-            throw new Error('User already exists');
-          }
+          if (existingUser) throw new Error('User already exists');
 
           const hashedPassword = await hashPassword(password);
           const newUser = await createUser({
@@ -43,12 +40,7 @@ export default NextAuth({
             mobileNumber,
           });
 
-          return {
-            id: newUser.id,
-            email: newUser.email,
-            name: newUser.name,
-            mobileNumber: newUser.mobileNumber,
-          };
+          return { id: newUser.id, email: newUser.email, name: newUser.name, mobileNumber: newUser.mobileNumber };
         }
 
         const user = await getUserByEmail(email);
@@ -56,12 +48,7 @@ export default NextAuth({
           throw new Error('Invalid email or password');
         }
 
-        return {
-          id: user.id,
-          email: user.email,
-          name: user.name,
-          mobileNumber: user.mobileNumber,
-        };
+        return { id: user.id, email: user.email, name: user.name, mobileNumber: user.mobileNumber };
       },
     }),
     GoogleProvider({
@@ -78,4 +65,5 @@ export default NextAuth({
       return url.startsWith(baseUrl) ? url : baseUrl;
     },
   },
+  debug: true, // Enable debugging
 });

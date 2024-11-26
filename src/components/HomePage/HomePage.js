@@ -34,25 +34,26 @@ export default function HomePage() {
       {/* Image Slide */}
       <div className="relative w-full h-full transition-opacity duration-1000 ease-in-out">
         {/* Black Transparent Backdrop */}
-        <div className="absolute inset-0 bg-black opacity-25 z-10"></div>
+        <div className="absolute inset-0 bg-black opacity-40 z-10"></div>
 
         <Image
           src={images[currentIndex].src}
           alt={images[currentIndex].alt}
           layout="fill"
           objectFit="cover"
-          className="w-full h-full fade-animation" // Added fade-animation class for smooth image transitions
+          priority={true} // Optimize main image load time
+          className="fade-animation"
         />
 
         {/* Text Overlay with Animation */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white z-20 p-4 slide-animation">
-          <h1 className="text-6xl font-bold mb-4">
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white z-20 px-6 slide-animation">
+          <h1 className="text-3xl sm:text-[42px]  md:text-5xl lg:text-6xl font-bold mb-4 drop-shadow-md">
             Experience Unmatched Luxury at Hotel Sudarshan
           </h1>
-          <p className="text-4xl mb-6">
+          <p className="text-lg md:text-2xl lg:text-4xl mb-6 drop-shadow-md">
             A Premier Destination for Comfort, Elegance, and Serenity
           </p>
-          <button className="px-6 py-3 bg-yellow-600 hover:bg-yellow-700 text-white font-semibold rounded">
+          <button className="px-6 py-3 bg-yellow-600 hover:bg-yellow-700 text-white font-semibold rounded shadow-md">
             Discover Our Rooms and Services
           </button>
         </div>
@@ -61,7 +62,8 @@ export default function HomePage() {
       {/* Left Arrow */}
       <button
         onClick={goToPreviousSlide}
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 z-20"
+        aria-label="Previous Slide"
+        className="absolute left-2 md:left-4 top-1/2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-3 rounded-full hover:bg-opacity-75 z-20"
       >
         <FaArrowLeft size={24} />
       </button>
@@ -69,18 +71,25 @@ export default function HomePage() {
       {/* Right Arrow */}
       <button
         onClick={goToNextSlide}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 z-20"
+        aria-label="Next Slide"
+        className="absolute right-2 md:right-4 top-1/2 transform -translate-y-1/2 text-white bg-black bg-opacity-50 p-3 rounded-full hover:bg-opacity-75 z-20"
       >
         <FaArrowRight size={24} />
       </button>
 
       {/* Dots Indicator */}
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
+      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20">
         {images.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentIndex(index)}
-            className={`h-3 w-3 rounded-full ${currentIndex === index ? "bg-yellow-500" : "bg-gray-300"}`}
+            aria-label={`Go to slide ${index + 1}`}
+            tabIndex={0}
+            className={`h-3 w-3 rounded-full ${
+              currentIndex === index
+                ? "bg-yellow-500"
+                : "bg-gray-300 hover:bg-yellow-400"
+            }`}
           />
         ))}
       </div>

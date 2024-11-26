@@ -13,18 +13,18 @@ const RoomDetailsPage = () => {
   const { id } = useParams(); // Get room id from params
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [showModal, setShowModal] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(false); // Track authentication
+  // const [isAuthenticated, setIsAuthenticated] = useState(false); // Track authentication
   const router = useRouter();
 
 
-  useEffect(() => {
-    // Check if user is authenticated (replace with actual auth logic)
-    const checkAuth = async () => {
-      const session = await fetch("/api/auth/session").then((res) => res.json());
-      setIsAuthenticated(session?.user ? true : false);
-    };
+  // useEffect(() => {
+  //   // Check if user is authenticated (replace with actual auth logic)
+  //   const checkAuth = async () => {
+  //     const session = await fetch("/api/auth/session").then((res) => res.json());
+  //     setIsAuthenticated(session?.user ? true : false);
+  //   };
 
-    checkAuth()});
+  //   checkAuth()});
 
   useEffect(() => {
     const fetchRoomDetails = async () => {
@@ -67,11 +67,12 @@ const RoomDetailsPage = () => {
   };
  
   const handleBookNow = () => {
-    if (!isAuthenticated) {
-      router.push("/login"); // Redirect to login page if not authenticated
-    } else {
-      setShowModal(true); // Show the modal when authenticated
-    }
+    setShowModal(true); 
+    // if (!isAuthenticated) {
+    //   router.push("/login"); // Redirect to login page if not authenticated
+    // } else {
+    //   setShowModal(true); // Show the modal when authenticated
+    // }
   };
 
 
@@ -146,106 +147,116 @@ const RoomDetailsPage = () => {
 
       {/* Main Content */}
       <div className="w-full flex justify-center items-center bg-yellow-100 h-auto p-8">
-        <div className="max-w-7xl w-full bg-white shadow-lg rounded-lg flex flex-col md:flex-row">
-          {/* Left Side: Image Carousel */}
-          <div className="relative w-full md:w-1/2 bg-gray-200">
-            <Image
-              src={images[currentImageIndex] || "/images/fallback-image.jpg"} // Add a fallback image
-              alt="Room Image"
-              className="w-full h-full object-cover rounded-l-lg"
-              layout="fill"
-            />
+  <div className="max-w-7xl w-full bg-white shadow-lg rounded-lg flex flex-col md:flex-row">
+    {/* Left Side: Image Carousel */}
+    <div className="relative w-full md:w-1/2 bg-gray-200 h-[400px] md:h-auto">
+      <Image
+        src={images[currentImageIndex] || "/images/img1.jpg"} 
+        alt="Room Image"
+        className="w-full h-full object-cover rounded-l-lg"
+        layout="fill"
+        objectFit="cover"  // Ensures the image maintains aspect ratio
+      />
 
-            <button
-              onClick={handlePrevImage}
-              className="absolute top-1/2 left-2 text-white bg-black bg-opacity-50 p-2 rounded-full"
-            >
-              &lt;
-            </button>
-            <button
-              onClick={handleNextImage}
-              className="absolute top-1/2 right-2 text-white bg-black bg-opacity-50 p-2 rounded-full"
-            >
-              &gt;
-            </button>
+      <button
+        onClick={handlePrevImage}
+        className="absolute top-1/2 left-2 text-white bg-black bg-opacity-50 p-2 rounded-full"
+      >
+        &lt;
+      </button>
+      <button
+        onClick={handleNextImage}
+        className="absolute top-1/2 right-2 text-white bg-black bg-opacity-50 p-2 rounded-full"
+      >
+        &gt;
+      </button>
+    </div>
+
+    {/* Right Side: Room Details */}
+    <div className="w-full md:w-1/2 p-8">
+      <h3 className="text-xl font-semibold w-full justify-between flex">
+        {room.title} 
+        <span>
+          <div
+            className={`top-4 right-4 px-4 py-2 text-sm rounded-full ${
+              room.available ? "bg-green-500" : "bg-red-500"
+            } text-white`}
+          >
+            {room.available ? "Available" : "Not Available"}
           </div>
+        </span>
+      </h3>
+      <p className="text-gray-700 mb-6">{room.description || "Description not available"}</p>
+      <p className="text-lg font-semibold mb-4">Price: {room.price || "N/A"}</p>
+      <p className="text-yellow-500 font-bold mb-6">Rating: {room.rating || "No rating"} ⭐</p>
 
-          {/* Right Side: Room Details */}
-          <div className="w-full md:w-1/2 p-8">
-          <h3 className="text-xl font-semibold w-full justify-between flex ">{room.title} <span>    <div className={` top-4 right-4 px-4 py-2 text-sm rounded-full ${
-      room.available ? 'bg-green-500' : 'bg-red-500'
-    } text-white`}>
-      {room.available ? 'Available' : 'Not Available'}
-    </div></span></h3>
-            <p className="text-gray-700 mb-6">{room.description || "Description not available"}</p>
-            <p className="text-lg font-semibold mb-4">Price: {room.price || "N/A"}</p>
-            <p className="text-yellow-500 font-bold mb-6">Rating: {room.rating || "No rating"} ⭐</p>
+      {/* Features */}
+      <div className="mb-6">
+        <h3 className="text-lg font-semibold mb-2">Features</h3>
+        <ul className="list-disc list-inside text-gray-700">
+          {room.features && room.features.length > 0 ? (
+            room.features.map((feature, index) => (
+              <li key={index}>{feature}</li>
+            ))
+          ) : (
+            <li>No features available</li>
+          )}
+        </ul>
+      </div>
 
-            {/* Features */}
-            <div className="mb-6">
-              <h3 className="text-lg font-semibold mb-2">Features</h3>
-              <ul className="list-disc list-inside text-gray-700">
-                {room.features && room.features.length > 0 ? (
-                  room.features.map((feature, index) => (
-                    <li key={index}>{feature}</li>
-                  ))
-                ) : (
-                  <li>No features available</li>
-                )}
-              </ul>
-            </div>
-
-            {/* Amenities */}
-            <div className="mb-6">
-              <h3 className="text-lg font-semibold mb-2">Room Amenities</h3>
-              <div className="grid grid-cols-2 gap-4 text-gray-700">
-                {room.amenities && room.amenities.length > 0 ? (
-                  room.amenities.map((amenity, index) => (
-                    <div key={index} className="flex items-center gap-2">
-                      <FaKey className="text-blue-500" /> {amenity}
-                    </div>
-                  ))
-                ) : (
-                  <p>No amenities available</p>
-                )}
+      {/* Amenities */}
+      <div className="mb-6">
+        <h3 className="text-lg font-semibold mb-2">Room Amenities</h3>
+        <div className="grid grid-cols-2 gap-4 text-gray-700">
+          {room.amenities && room.amenities.length > 0 ? (
+            room.amenities.map((amenity, index) => (
+              <div key={index} className="flex items-center gap-2">
+                <FaKey className="text-blue-500" /> {amenity}
               </div>
-            </div>
-
-            {/* Facilities */}
-            <div className="mb-6">
-              <h3 className="text-lg font-semibold mb-2">Facilities</h3>
-              <div className="grid grid-cols-2 gap-4 text-gray-700">
-                {room.facilities && room.facilities.length > 0 ? (
-                  room.facilities.map((facility, index) => (
-                    <div key={index} className="flex items-center gap-2">
-                      <FaSwimmer className="text-blue-500" /> {facility}
-                    </div>
-                  ))
-                ) : (
-                  <p>No facilities available</p>
-                )}
-              </div>
-            </div>
-
-            {/* Cancellation Rules */}
-            <div className="mb-6">
-              <h3 className="text-lg font-semibold mb-2">Cancellation Rules</h3>
-              <p className="text-gray-700">Free Cancellation Before 2 Days of Check-in</p>
-              <p className="text-gray-700">According to time at destination</p>
-              <p className="text-red-500 font-semibold">No Refund after check-In</p>
-            </div>
-
-            {/* Booking Options */}
-            <div className="flex flex-col gap-2">
-              <button className="bg-blue-500 text-white font-semibold py-2 rounded-lg" onClick={handleBookNow} >
-                Book - {room.price || "N/A"}
-              </button>
-              <button className="bg-transparent text-blue-500 font-semibold py-2 rounded-lg border border-blue-500">
-                Save to wishlist
-              </button>
-            </div>
-          </div>
+            ))
+          ) : (
+            <p>No amenities available</p>
+          )}
         </div>
+      </div>
+
+      {/* Facilities */}
+      <div className="mb-6">
+        <h3 className="text-lg font-semibold mb-2">Facilities</h3>
+        <div className="grid grid-cols-2 gap-4 text-gray-700">
+          {room.facilities && room.facilities.length > 0 ? (
+            room.facilities.map((facility, index) => (
+              <div key={index} className="flex items-center gap-2">
+                <FaSwimmer className="text-blue-500" /> {facility}
+              </div>
+            ))
+          ) : (
+            <p>No facilities available</p>
+          )}
+        </div>
+      </div>
+
+      {/* Cancellation Rules */}
+      <div className="mb-6">
+        <h3 className="text-lg font-semibold mb-2">Cancellation Rules</h3>
+        <p className="text-gray-700">Free Cancellation Before 2 Days of Check-in</p>
+        <p className="text-gray-700">According to time at destination</p>
+        <p className="text-red-500 font-semibold">No Refund after check-In</p>
+      </div>
+
+      {/* Booking Options */}
+      <div className="flex flex-col gap-2">
+        <button className="bg-blue-500 text-white font-semibold py-2 rounded-lg" onClick={handleBookNow}>
+          Book - {room.price || "N/A"}
+        </button>
+        <button className="bg-transparent text-blue-500 font-semibold py-2 rounded-lg border border-blue-500">
+          Save to wishlist
+        </button>
+      </div>
+    </div>
+  </div>
+
+
       </div>
       <BookingModal
         isVisible={showModal}

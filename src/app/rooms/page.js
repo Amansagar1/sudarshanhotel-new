@@ -1,227 +1,111 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
-import React, { useEffect, useState } from 'react';
-import { getAllRoomsDetails } from '../../Webservices/ManagementAPIController';
-import Image from 'next/image';
-import Link from 'next/link';
+import React, { useEffect, useState } from "react";
+import { getAllRoomsDetails } from "../../Webservices/ManagementAPIController";
+import Image from "next/image";
+import Link from "next/link";
 
 const RoomPage = () => {
   const [rooms, setRooms] = useState([]);
-  const [error, setError] = useState(null);
   const [filteredRooms, setFilteredRooms] = useState([]);
-  
-  // States for filters
-  const [popularFilters, setPopularFilters] = useState({
-    superDeluxe: false,
-    available: false,
-    bestRatings: false,
+  const [filterVisible, setFilterVisible] = useState(false);
+  const [filters, setFilters] = useState({
+    popular: { superDeluxe: false, available: false, bestRatings: false },
+    room: { available: false, booked: false, deluxe: false, superDeluxe: false },
+    propertyType: { hotels: false, homestays: false },
+    facilities: { parking: false, restaurant: false, petsAllowed: false },
   });
-  const [roomFilters, setRoomFilters] = useState({
-    available: false,
-    booked: false,
-    deluxe: false,
-    superDeluxe: false,
-  });
-  const [propertyType, setPropertyType] = useState({
-    hotels: false,
-    homestays: false,
-  });
-  const [facilities, setFacilities] = useState({
-    parking: false,
-    restaurant: false,
-    petsAllowed: false,
-  });
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Fetch rooms data when the component mounts
-    getAllRoomsDetails()
-      .then((data) => {
-        if (data && data.result && Array.isArray(data.result)) {
-          setRooms(data.result); // Store the fetched room data in state
-          setFilteredRooms(data.result); // Initial filtered data
+    const fetchRooms = async () => {
+      try {
+        const data = await getAllRoomsDetails();
+        if (data?.result && Array.isArray(data.result)) {
+          setRooms(data.result);
+          setFilteredRooms(data.result);
         } else {
-          setError('Failed to fetch rooms data.');
+          setError("Failed to fetch rooms data.");
         }
-      })
-      .catch((err) => {
-        setError('Error fetching rooms data.');
+      } catch (err) {
         console.error(err);
-      });
+        setError("Error fetching rooms data.");
+      }
+    };
+    fetchRooms();
   }, []);
 
-  // Update filtered rooms based on selected filters
   useEffect(() => {
-    let updatedRooms = rooms;
+    const applyFilters = () => {
+      let filtered = [...rooms];
+      const { popular, room, propertyType, facilities } = filters;
 
-    // Apply popular filters
-    if (popularFilters.superDeluxe) {
-      updatedRooms = updatedRooms.filter(room => room.title.includes("Super Deluxe"));
-    }
-    if (popularFilters.available) {
-      updatedRooms = updatedRooms.filter(room => room.status === "available");
-    }
-    if (popularFilters.bestRatings) {
-      updatedRooms = updatedRooms.filter(room => room.rating >= 4);
-    }
+      if (popular.superDeluxe) filtered = filtered.filter((r) => r.title.includes("Super Deluxe"));
+      if (popular.available) filtered = filtered.filter((r) => r.status === "available");
+      if (popular.bestRatings) filtered = filtered.filter((r) => r.rating >= 4);
 
-    // Apply room filters
-    if (roomFilters.available) {
-      updatedRooms = updatedRooms.filter(room => room.status === "available");
-    }
-    if (roomFilters.booked) {
-      updatedRooms = updatedRooms.filter(room => room.status === "booked");
-    }
-    if (roomFilters.deluxe) {
-      updatedRooms = updatedRooms.filter(room => room.title.includes("Deluxe"));
-    }
-    if (roomFilters.superDeluxe) {
-      updatedRooms = updatedRooms.filter(room => room.title.includes("Super Deluxe"));
-    }
+      if (room.available) filtered = filtered.filter((r) => r.status === "available");
+      if (room.booked) filtered = filtered.filter((r) => r.status === "booked");
+      if (room.deluxe) filtered = filtered.filter((r) => r.title.includes("Deluxe"));
+      if (room.superDeluxe) filtered = filtered.filter((r) => r.title.includes("Super Deluxe"));
 
-    // Apply property type filters
-    if (propertyType.hotels) {
-      updatedRooms = updatedRooms.filter(room => room.propertyType === "Hotel");
-    }
-    if (propertyType.homestays) {
-      updatedRooms = updatedRooms.filter(room => room.propertyType === "Homestay");
-    }
+      if (propertyType.hotels) filtered = filtered.filter((r) => r.propertyType === "Hotel");
+      if (propertyType.homestays) filtered = filtered.filter((r) => r.propertyType === "Homestay");
 
-    // Apply facilities filters
-    if (facilities.parking) {
-      updatedRooms = updatedRooms.filter(room => room.features.includes("Parking"));
-    }
-    if (facilities.restaurant) {
-      updatedRooms = updatedRooms.filter(room => room.features.includes("Restaurant"));
-    }
-    if (facilities.petsAllowed) {
-      updatedRooms = updatedRooms.filter(room => room.features.includes("Pets allowed"));
-    }
+      if (facilities.parking) filtered = filtered.filter((r) => r.features.includes("Parking"));
+      if (facilities.restaurant) filtered = filtered.filter((r) => r.features.includes("Restaurant"));
+      if (facilities.petsAllowed) filtered = filtered.filter((r) => r.features.includes("Pets allowed"));
 
-    setFilteredRooms(updatedRooms);
-  }, [popularFilters, roomFilters, propertyType, facilities, rooms]);
+      setFilteredRooms(filtered);
+    };
+    applyFilters();
+  }, [filters, rooms]);
 
-  // Checkbox change handlers for each filter
-  const handlePopularFilterChange = (filter) => {
-    setPopularFilters((prev) => ({ ...prev, [filter]: !prev[filter] }));
+  const toggleFilter = (category, filter) => {
+    setFilters((prev) => ({
+      ...prev,
+      [category]: { ...prev[category], [filter]: !prev[category][filter] },
+    }));
   };
 
-  const handleRoomFilterChange = (filter) => {
-    setRoomFilters((prev) => ({ ...prev, [filter]: !prev[filter] }));
-  };
-
-  const handlePropertyTypeChange = (type) => {
-    setPropertyType((prev) => ({ ...prev, [type]: !prev[type] }));
-  };
-
-  const handleFacilitiesChange = (facility) => {
-    setFacilities((prev) => ({ ...prev, [facility]: !prev[facility] }));
-  };
-
-  if (error) {
-    return <div>{error}</div>; // Handle error state
-  }
+  if (error) return <div className="text-center text-red-600">{error}</div>;
 
   return (
-    <div className="font-sans">
-      {/* Top Section with Title */}
-      <div
-        className="h-[400px] bg-cover bg-center text-white flex flex-col justify-center items-center"
-        style={{ backgroundImage: "url('/images/img2.jpg')" }}
-      >
+    <div className="font-sans ">
+      {/* Hero Section */}
+      <section className="h-[400px] bg-cover bg-center flex flex-col justify-center items-center text-white" style={{ backgroundImage: "url('/images/img2.jpg')" }}>
         <h1 className="text-4xl font-bold">Rooms & Suites</h1>
-        <div>
-          <Link href="/" passHref>
-            <span className="text-lg mt-2">Home /</span>
+        <nav className="text-lg mt-2">
+          <Link href="/" className="hover:underline">
+            Home /
           </Link>
-          <span className="text-lg mt-2">
-            <Link href="/rooms"> Rooms & Suites</Link>
-          </span>
-        </div>
-      </div>
+          <Link href="/rooms" className="hover:underline">
+            Rooms & Suites
+          </Link>
+        </nav>
+      </section>
 
-      {/* Sidebar Filter Section */}
-      <div className="flex w-full justify-center p-10">
-        <aside className="w-1/6 p-4 bg-gray-100">
+      {/* Content Section */}
+      <div className="flex flex-wrap p-5 ">
+        {/* Filters */}
+        <aside className={`p-4 bg-gray-100 transition-all duration-300 w-full md:w-1/4 ${filterVisible ? "block" : "hidden"} md:block`}>
           <h2 className="text-2xl font-semibold mb-4">Filter by</h2>
-          <div>
-            <h3 className="font-semibold text-lg">Popular filters</h3>
-            <ul className="space-y-2 mt-2">
-              <li><input type="checkbox" onChange={() => handlePopularFilterChange('superDeluxe')} /> Super Deluxe Room</li>
-              <li><input type="checkbox" onChange={() => handlePopularFilterChange('available')} /> Available</li>
-              <li><input type="checkbox" onChange={() => handlePopularFilterChange('bestRatings')} /> Best Ratings</li>
-            </ul>
-          </div>
-          <div className="mt-6">
-            <h3 className="font-semibold text-lg">Room filter</h3>
-            <ul className="space-y-2 mt-2">
-              <li><input type="checkbox" onChange={() => handleRoomFilterChange('available')} /> Available</li>
-              <li><input type="checkbox" onChange={() => handleRoomFilterChange('booked')} /> Booked</li>
-              <li><input type="checkbox" onChange={() => handleRoomFilterChange('deluxe')} /> Deluxe Rooms</li>
-              <li><input type="checkbox" onChange={() => handleRoomFilterChange('superDeluxe')} /> Super Deluxe Room</li>
-            </ul>
-          </div>
-          <div className="mt-6">
-            <h3 className="font-semibold text-lg">Property type</h3>
-            <ul className="space-y-2 mt-2">
-              <li><input type="checkbox" onChange={() => handlePropertyTypeChange('hotels')} /> Hotels</li>
-              <li><input type="checkbox" onChange={() => handlePropertyTypeChange('homestays')} /> Homestays</li>
-            </ul>
-          </div>
-          <div className="mt-6">
-            <h3 className="font-semibold text-lg">Facilities</h3>
-            <ul className="space-y-2 mt-2">
-              <li><input type="checkbox" onChange={() => handleFacilitiesChange('parking')} /> Parking</li>
-              <li><input type="checkbox" onChange={() => handleFacilitiesChange('restaurant')} /> Restaurant</li>
-              <li><input type="checkbox" onChange={() => handleFacilitiesChange('petsAllowed')} /> Pets allowed</li>
-            </ul>
-          </div>
+          {renderFilterSection("Popular Filters", filters.popular, "popular", toggleFilter)}
+          {renderFilterSection("Room Filters", filters.room, "room", toggleFilter)}
+          {renderFilterSection("Property Type", filters.propertyType, "propertyType", toggleFilter)}
+          {renderFilterSection("Facilities", filters.facilities, "facilities", toggleFilter)}
         </aside>
 
-        {/* Main Room Listing Section */}
-        <main className="w-3/4 p-6">
-          <h2 className="text-3xl font-semibold mb-4">Sudarshan&apos;s Rooms & Suites</h2>
-          <div className="space-y-6">
+        {/* Rooms */}
+        <main className="w-full md:w-3/4 p-6">
+          <h2 className="text-3xl font-semibold mb-6">Available Rooms</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredRooms.length > 0 ? (
               filteredRooms.map((room) => (
-                <div key={room._id} className="bg-white shadow-md rounded-lg overflow-hidden flex flex-col md:flex-row p-4 w-full h-[300px]">
-                  {/* Room Image */}
-                  <div className="w-full md:w-1/3">
-                    <Image
-                      src={room.image || '/images/img1.jpg'} // Fallback if no image is provided
-                      alt={room.title}
-                      width={500}
-                      height={300}
-                      className="w-full h-full object-cover rounded-md"
-                    />
-                  </div>
-                  <div className="mt-4 md:mt-0 md:ml-6 flex-1 w-full">
- 
-                  {/* Room Details */}
-                 
-                       {/* Available Badge */}
-
-                    <h3 className="text-xl font-semibold w-full justify-between flex ">{room.title} <span>    <div className={` top-4 right-4 px-4 py-2 text-sm rounded-full ${
-      room.available ? 'bg-green-500' : 'bg-red-500'
-    } text-white`}>
-      {room.available ? 'Available' : 'Not Available'}
-    </div></span></h3>
-                    <p className="text-gray-600 mt-1">{room.price || 'Price not available'}</p>
-                    <p className="text-yellow-500 mt-1">
-                      {'★'.repeat(room.rating)}{'☆'.repeat(5 - room.rating)}
-                    </p>
-                    <p className="text-gray-700 mt-2">{room.description || 'Description not available'}</p>
-                    <ul className="text-gray-600 mt-2">
-                      {room.features.map((feature, index) => (
-                        <li key={index}>• {feature}</li>
-                      ))}
-                    </ul>
-                    <Link href={`/rooms/${room._id}`} passHref>
-                      <button className="p-2 mt-4 bg-blue-500 rounded text-white shadow-md">View Room</button>
-                    </Link>
-                  </div>
-                </div>
+                <RoomCard key={room._id} room={room} />
               ))
             ) : (
-              <p className="text-center text-gray-700">No rooms available.</p>
+              <p className="col-span-full text-center text-gray-600">No rooms available.</p>
             )}
           </div>
         </main>
@@ -229,5 +113,51 @@ const RoomPage = () => {
     </div>
   );
 };
+
+const renderFilterSection = (title, filters, category, toggleFilter) => (
+  <div className="mb-6">
+    <h3 className="font-semibold text-lg">{title}</h3>
+    <ul className="space-y-2 mt-2">
+      {Object.keys(filters).map((filter) => (
+        <li key={filter}>
+          <label className="flex items-center space-x-2">
+            <input
+              type="checkbox"
+              checked={filters[filter]}
+              onChange={() => toggleFilter(category, filter)}
+              className="form-checkbox"
+            />
+            <span className="capitalize">{filter.replace(/([A-Z])/g, " $1").toLowerCase()}</span>
+          </label>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
+
+const RoomCard = ({ room }) => (
+  <div className="bg-white shadow-lg rounded-md overflow-hidden flex flex-col">
+    <Image
+      src={room.image || "/images/img1.jpg"}
+      alt={room.title}
+      width={500}
+      height={300}
+      className="w-full h-[200px] object-cover"
+    />
+    <div className="p-4">
+      <h3 className="text-xl font-semibold flex justify-between items-center">
+        {room.title}
+        <span className={`text-xs px-2 py-1 rounded-full ${room.available ? "bg-green-500" : "bg-red-500"} text-white`}>
+          {room.available ? "Available" : "Booked"}
+        </span>
+      </h3>
+      <p className="text-gray-700 mt-2">{room.description || "No description available."}</p>
+      <p className="text-yellow-500 mt-2">{Array(room.rating).fill("★").join("")}</p>
+      <Link href={`/rooms/${room._id}`} className="block mt-4 text-center bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600">
+        View Room
+      </Link>
+    </div>
+  </div>
+);
 
 export default RoomPage;

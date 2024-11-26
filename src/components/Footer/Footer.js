@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { FaFacebookF, FaLinkedinIn, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
-
 import Link from "next/link";
 
 const Footer = () => {
@@ -13,53 +12,47 @@ const Footer = () => {
   }, []);
 
   return (
-    <div className=" bg-gray-800 pt-9 w-full flex" >
-      <div className="mx-auto w-full  px-4 xl:px-0 p-10">
-        <div className="flex flex-col justify-between sm:px-[18px] md:flex-row md:px-10 p-4">
+    <div className="bg-gray-800 pt-9 w-full flex justify-center">
+      <div className="w-full px-6 xl:px-0 p-10 max-w-screen-xl">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
           {/* Logo & Info Section */}
-          <div className="md:w-[316px]">
-            <h1 className="text-white font-extrabold">
-             Hotel  <span className="text-rose-600">Sudarshan</span>
+          <div className="md:w-full text-center md:text-left">
+            <h1 className="text-white font-extrabold text-2xl">
+              Hotel <span className="text-rose-600">Sudarshan</span>
             </h1>
-            <p className="mt-[18px] text-[15px] font-normal text-white/[80%]">
+            <p className="mt-4 text-[15px] font-normal text-white/[80%]">
               Welcome to Hotel Sudarshan, a place where luxury meets comfort. Enjoy a unique experience tailored for your every need. Whether it&apos;s our world-class amenities, rooms, or services, we are here to offer the best stay in town.
             </p>
-            <div className="mt-[18px] flex gap-4">
+            <div className="mt-6 flex justify-center gap-4">
               {/* Social Media Links */}
               <Link className="hover:scale-110" target="_blank" href="https://www.facebook.com/SudarshanHotel">
-                <FaFacebookF className="text-white" size={36} />
+                <FaFacebookF className="text-white" size={30} />
               </Link>
               <Link className="hover:scale-110" target="_blank" href="https://www.linkedin.com/company/sudarshan-hotel">
-                <FaLinkedinIn className="text-white" size={36} />
+                <FaLinkedinIn className="text-white" size={30} />
               </Link>
               <Link className="hover:scale-110" target="_blank" href="https://www.instagram.com/sudarshan_hotel">
-                <FaInstagram className="text-white" size={36} />
+                <FaInstagram className="text-white" size={30} />
               </Link>
               <Link className="hover:scale-110" target="_blank" href="https://twitter.com/SudarshanHotel">
-                <FaTwitter className="text-white" size={36} />
+                <FaTwitter className="text-white" size={30} />
               </Link>
               <Link className="hover:scale-110" target="_blank" href="https://www.youtube.com/channel/sudarshan-hotel">
-                <FaYoutube className="text-white" size={36} />
+                <FaYoutube className="text-white" size={30} />
               </Link>
             </div>
           </div>
 
           {/* Support Info Section */}
-          <div className="md:w-[316px] p-4 ">
-            <div className="mt-[23px] flex flex-col  justify-center ">
-           
-              <div className="ml-4 text-white/[80%]  ">
-           
-              <h4 className="font-semibold flex gap-4 items-center "> Support </h4>
-                <p>For inquiries, call or email:</p>
-                <a href="tel:+1234567890" className="text-white hover:text-rose-600">+123 456 7890</a><br />
-                <a href="mailto:info@sudarshanhotel.com" className="text-white hover:text-rose-600">info@sudarshanhotel.com</a>
-              </div>
-            </div>
+          <div className="md:w-full text-center md:text-left">
+            <h4 className="font-semibold text-white">Support</h4>
+            <p className="mt-4 text-white">For inquiries, call or email:</p>
+            <a href="tel:+1234567890" className="text-white hover:text-rose-600">+123 456 7890</a><br />
+            <a href="mailto:info@sudarshanhotel.com" className="text-white hover:text-rose-600">info@sudarshanhotel.com</a>
           </div>
 
           {/* Quick Links Section */}
-          <div className="md:w-[316px] p-4">
+          <div className="md:w-full text-center md:text-left">
             <h4 className="font-semibold text-white">Quick Links</h4>
             <ul className="mt-4 space-y-2 text-white/[80%]">
               <li><Link href="/aboutus" className="hover:text-rose-600">About Us</Link></li>
@@ -69,31 +62,31 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Download Section */}
-          <div className="md:w-[316px] p-10">
+          {/* Payment Method Section */}
+          <div className="md:w-full text-center md:text-left">
             <h4 className="font-semibold text-white">Payment Method</h4>
-            <div className="flex gap-4 mt-4">
-              <Link href="/" className="flex items-center justify-center  bg-white p-2">
-                <Image src="/images/PaymentLogo/googlepay.png" alt="Google Play" width="135" height={135} className=" " />
+            <div className="flex justify-center gap-6 mt-4">
+              <Link href="/" className="flex items-center justify-center bg-white p-2">
+                <Image src="/images/PaymentLogo/googlepay.png" alt="Google Pay" width="135" height={135} />
               </Link>
               <Link href="/" className="flex items-center justify-center bg-white p-2">
-                <Image src="/images/PaymentLogo/phonepay.png" alt="Apple Store" width="135" height={135} className=""/>
+                <Image src="/images/PaymentLogo/phonepay.png" alt="Phone Pay" width="135" height={135} />
               </Link>
-              <Link href="/" className="flex items-center justify-center  bg-white p-2">
-                <Image src="/images/PaymentLogo/paytm.png" alt="Apple Store" width="135" height={135} className="" />
+              <Link href="/" className="flex items-center justify-center bg-white p-2">
+                <Image src="/images/PaymentLogo/paytm.png" alt="Paytm" width="135" height={135} />
               </Link>
             </div>
           </div>
         </div>
 
         {/* Bottom Copyright Section */}
-        <div className="flex justify-between items-center mt-2 border-t border-white pt-4 p-10">
-          <div className="text-white text-[14px]">
+        <div className="mt-8 border-t border-white pt-4 flex flex-col sm:flex-row justify-between items-center text-center sm:text-left text-white text-sm">
+          <div className="text-white">
             <p>&copy; {year} Hotel Sudarshan . All rights reserved.</p>
           </div>
-          <div className="flex gap-6">
-            <a href="/privacy-policy" className="text-white text-[14px] hover:text-rose-600">Privacy Policy</a>
-            <a href="/terms-conditions" className="text-white text-[14px] hover:text-rose-600">Terms & Conditions</a>
+          <div className="flex gap-6 mt-4 sm:mt-0">
+            <a href="/privacy-policy" className="text-white hover:text-rose-600">Privacy Policy</a>
+            <a href="/terms-conditions" className="text-white hover:text-rose-600">Terms & Conditions</a>
           </div>
         </div>
       </div>

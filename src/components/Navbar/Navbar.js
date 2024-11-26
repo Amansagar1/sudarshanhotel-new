@@ -1,62 +1,57 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import Link from 'next/link';
-
-import navLinks from "./Navbar.json";
-import UserCard from './UserCard';
-import { useSession } from 'next-auth/react'; // Importing useSession
+import Link from "next/link";
+import { useSession } from "next-auth/react";
+import navLinks from "./Navbar.json"; // Import nav links
+import UserCard from "./UserCard"; // Import UserCard component
 
 const Navbar = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [navbarBg, setNavbarBg] = useState('bg-transparent');
+  const [menuOpen, setMenuOpen] = useState(false); // Mobile menu toggle
+  const [navbarBg, setNavbarBg] = useState("bg-transparent"); // Navbar background on scroll
   const [userCardOpen, setUserCardOpen] = useState(false); // User card toggle state
 
   const { data: session } = useSession(); // Get session data
 
+  // Handle scroll to toggle navbar background
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
-        setNavbarBg('bg-[#000000e7]');
+        setNavbarBg("bg-[#000000e7]");
       } else {
-        setNavbarBg('bg-transparent');
+        setNavbarBg("bg-transparent");
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
-
-  const toggleUserCard = () => {
-    setUserCardOpen(!userCardOpen);
-  };
+  // Toggle menu and user card
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+  const toggleUserCard = () => setUserCardOpen(!userCardOpen);
 
   // Function to generate initials from user name
   const getInitials = (name, email) => {
-    // If name is not available, fallback to email
     if (!name && email) {
-      const emailName = email.split('@')[0];  // Extract the part before '@'
+      const emailName = email.split("@")[0];
       name = emailName;
     }
-  
-    const nameArray = name.split(' ');
+
+    const nameArray = name.split(" ");
     const firstNameInitial = nameArray[0]?.charAt(0).toUpperCase();
-    const lastNameInitial = nameArray.length > 1 ? nameArray[nameArray.length - 1]?.charAt(0).toUpperCase() : '';
+    const lastNameInitial = nameArray.length > 1 ? nameArray[nameArray.length - 1]?.charAt(0).toUpperCase() : "";
     return `${firstNameInitial}${lastNameInitial}`;
   };
 
   // Check if session is available and get user data
   const user = session?.user || {
-    name: 'Guest User',
-    email: 'guest@example.com',
-    image: '/images/img3.jpg',
+    name: "Guest User",
+    email: "guest@example.com",
+    image: "/images/img3.jpg",
   };
 
   return (
@@ -65,13 +60,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between w-[95%] relative">
           {/* Logo Section */}
           <div className="flex items-center">
-            <Image
-              src='/images/logo.png'
-              width={160}
-              height={160}
-              alt="brand logo"
-           
-            />
+            <Image src="/images/logo.png" width={160} height={160} alt="brand logo" />
           </div>
 
           {/* Links Section (Desktop) */}
@@ -88,25 +77,20 @@ const Navbar = () => {
             {/* User Circle (Right side of Navbar) */}
             <div
               onClick={toggleUserCard}
-              className="cursor-pointer w-12 h-12 rounded-full border-2 border-gray-400 overflow-hidden flex justify-center items-center bg-black"
+              className="cursor-pointer w-12 h-12 rounded-full border-2 border-gray-400 overflow-hidden md:flex justify-center items-center bg-black hidden"
             >
-              {/* If user has an image, show it, else show initials */}
               {user.image ? (
-    <img
-      className="w-full h-full object-cover"
-      src={user.image}
-      alt="user"
-    />
-  ) : (
-    <span className="text-white text-lg font-semibold">
-      {getInitials(user.name, user.email)} {/* Pass both name and email */}
-    </span>
-  )}
+                <img className="w-full h-full object-cover" src={user.image} alt="user" />
+              ) : (
+                <span className="text-white text-lg font-semibold">
+                  {getInitials(user.name, user.email)}
+                </span>
+              )}
             </div>
 
-            {/* User Card Popup (Position it correctly) */}
+            {/* User Card Popup */}
             {userCardOpen && (
-              <div className="absolute top-14 right-0 p-4 w-56 z-50 transition-all duration-300">
+              <div className="absolute top-14 right-0 p-4 w-56 z-50 transition-all duration-300 opacity-100 transform translate-x-0 hidden md:block">
                 <UserCard user={user} isOpen={userCardOpen} />
               </div>
             )}
@@ -114,7 +98,7 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
-            <button onClick={toggleMenu} className="text-white text-3xl">
+            <button onClick={toggleMenu} className="text-white text-3xl transition-transform duration-300">
               {menuOpen ? "✕" : "☰"}
             </button>
           </div>
@@ -130,6 +114,8 @@ const Navbar = () => {
                 <span className="hover:text-yellow-500 transition duration-300">{link.label}</span>
               </Link>
             ))}
+
+            {/* Show User Card on mobile */}
             <div onClick={toggleUserCard} className="cursor-pointer flex items-center justify-center w-full">
               <div className="w-10 h-10 flex justify-center items-center rounded-full bg-gray-300 border-2 border-gray-400">
                 {user.image ? (
