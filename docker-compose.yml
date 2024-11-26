@@ -1,27 +1,51 @@
-version: '3.8'
-
+version: "3.9"
 services:
-  app:
-    build: .
-    container_name: sudarshan hotel
+  # Backend service
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - "3000:3000" # Frontend
-      - "5000:5000" # Backend
+      - "5000:5000" # Maps backend service to port 5000
     environment:
-      NODE_ENV: production
-      MONGO_URI: ${MONGO_URI} # MongoDB Atlas URI
-      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID} # Google Auth Client ID
-      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET} # Google Auth Secret
-      NEXTAUTH_SECRET: ${NEXTAUTH_SECRET} # NextAuth Secret for Authentication
-      PORT: 5000 # Backend port
+      - MONGODB_URI=mongodb+srv://sagarsharmaofficial0:%40Developer%400531@cluster0.sf919.mongodb.net/SudarshanHotel?retryWrites=true&w=majority
+      - PORT=5000
+      - NEXT_PUBLIC_PROD_BASE_URL=http://localhost:5000
+      - GOOGLE_CLIENT_ID=908772399685-r786oer3b5dqlo7id0uf97h3rqhvnib8.apps.googleusercontent.com
+      - GOOGLE_CLIENT_SECRET=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
+      - NEXTAUTH_URL=http://localhost:3000
+      - NEXTAUTH_SECRET=y7pV7pT29MhhrzqA7XpD7+ygkF67G+z5mvL1eqwEpmk=
+      - MONGO_USER=sagarsharmaofficial0
+      - MONGO_PASS=%40Developer%400531
+    volumes:
+      - .:/app
+      - /app/node_modules
     depends_on:
-      - mongodb
+      - db
 
-  mongodb:
-    image: mongo
+  # Database service (MongoDB)
+  db:
+    image: mongo:5.0
     container_name: mongodb
     ports:
       - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
     environment:
-      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
-      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASS}
+      MONGO_INITDB_ROOT_USERNAME: sagarsharmaofficial0
+      MONGO_INITDB_ROOT_PASSWORD: "@Developer@0531"
+
+  # Frontend service (optional if separate)
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000" # Frontend exposed on port 3000
+    depends_on:
+      - backend
+    environment:
+      - API_URL=http://backend:5000
+
+volumes:
+  mongodb_data:
