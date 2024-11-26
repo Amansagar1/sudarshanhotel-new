@@ -6,7 +6,7 @@ import {  FaKey, FaSwimmer } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
 import BookingModal from "../../../components/RoomBooking/BookingPopup"
-import {useRouter  } from "next/navigation"
+// import {useRouter  } from "next/navigation"
 const RoomDetailsPage = () => {
   const [room, setRoom] = useState(null);
   const [error, setError] = useState(null);
@@ -14,7 +14,7 @@ const RoomDetailsPage = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [showModal, setShowModal] = useState(false);
   // const [isAuthenticated, setIsAuthenticated] = useState(false); // Track authentication
-  const router = useRouter();
+  // const router = useRouter();
 
 
   // useEffect(() => {
