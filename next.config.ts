@@ -38,11 +38,7 @@ const nextConfig: NextConfig = {
   },
 
   // Optional: Configure Image Optimization settings for Vercel (if you want to use next/image)
-  images: {
-    domains: ['your-image-domain.com'],  // Replace with your image domains if needed
-    deviceSizes: [640, 750, 1080, 1920],
-    imageSizes: [16, 32, 48, 64, 96],
-  },
+ 
 };
 
 export default nextConfig;
