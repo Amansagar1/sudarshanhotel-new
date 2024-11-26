@@ -6,13 +6,26 @@ import { FaKey, FaSwimmer } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
 import BookingModal from "../../../components/RoomBooking/BookingPopup";
-
+import {useRouter  } from "next/navigation"
 const RoomDetailsPage = () => {
   const [room, setRoom] = useState(null);
   const [error, setError] = useState(null);
   const { id } = useParams();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [showModal, setShowModal] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false); // Track authentication
+  const router = useRouter();
+
+  useEffect(() => {
+    // Check if user is authenticated (replace with actual auth logic)
+    const checkAuth = async () => {
+      const session = await fetch("/api/auth/session").then((res) => res.json());
+      setIsAuthenticated(session?.user ? true : false);
+    };
+
+    checkAuth()});
+
+
 
   useEffect(() => {
     const fetchRoomDetails = async () => {
@@ -51,7 +64,11 @@ const RoomDetailsPage = () => {
   };
 
   const handleBookNow = () => {
-    setShowModal(true);
+    if (!isAuthenticated) {
+      router.push("/login"); // Redirect to login page if not authenticated
+    } else {
+      setShowModal(true); // Show the modal when authenticated
+    }
   };
 
   const handleCloseModal = () => {
