@@ -48,7 +48,7 @@ const Footer = () => {
             <h4 className="font-semibold text-white">Support</h4>
             <p className="mt-4 text-white">For inquiries, call or email:</p>
             <a href="tel:+1234567890" className="text-white hover:text-rose-600">+91 00000000000</a><br />
-            <a href="mailto:info@sudarshanhotel.com" className="text-white hover:text-rose-600">hotelsudarsha01@gmail.com</a>
+            <a href="mailto:info@sudarshanhotel.com" className="text-white hover:text-rose-600">hotelsudarshan01@gmail.com</a>
           </div>
 
           {/* Quick Links Section */}

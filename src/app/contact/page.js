@@ -40,7 +40,7 @@ const ContactUs = () => {
     </div>
     <div className="flex items-center gap-4 text-white">
       <FaEnvelope className="text-2xl text-white" />
-      <span className="text-white">hotelsudarsha01@gmail.com</span>
+      <span className="text-white">hotelsudarshan01@gmail.com</span>
     </div>
     <div className="flex items-center gap-4 text-white">
       <FaMapMarkerAlt className="text-2xl text-white" />
