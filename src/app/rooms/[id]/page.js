@@ -222,7 +222,7 @@ const RoomDetailsPage = () => {
                 className="bg-blue-500 text-white font-semibold py-2 rounded-lg"
                 onClick={handleBookNow}
               >
-                Book - ₹{room.price || "N/A"}
+                Book - {room.price || "N/A"}
               </button>
               <button className="bg-transparent text-blue-500 font-semibold py-2 rounded-lg border border-blue-500">
                 Save to Wishlist
