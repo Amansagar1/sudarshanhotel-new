@@ -1,7 +1,7 @@
 import React from "react";
 
 const FilterSidebar = ({ filters, toggleFilter }) => (
-  <aside className="p-4 bg-gray-100 w-full md:w-1/4">
+  <aside className="p-4 bg-gray-100 w-full ">
     <h2 className="text-2xl font-semibold mb-4">Filter by</h2>
     {Object.keys(filters).map((category) => (
       <div key={category} className="mb-6">

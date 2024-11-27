@@ -8,7 +8,6 @@ import RoomCard from "../../components/Rooms/RoomCard";
 const RoomPage = () => {
   const [rooms, setRooms] = useState([]);
   const [filteredRooms, setFilteredRooms] = useState([]);
-  // const [filterVisible, setFilterVisible] = useState(false);
   const [filters, setFilters] = useState({
     size: { small: false, medium: false, large: false },
     occupancy: { single: false, double: false, family: false },
@@ -32,6 +31,7 @@ const RoomPage = () => {
     rating: { oneStar: false, twoStars: false, threeStars: false, fourStars: false, fiveStars: false },
   });
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchRooms = async () => {
@@ -52,6 +52,8 @@ const RoomPage = () => {
       } catch (err) {
         console.error(err);
         setError("Error fetching rooms data.");
+      } finally {
+        setLoading(false);
       }
     };
     fetchRooms();
@@ -94,20 +96,77 @@ const RoomPage = () => {
     }));
   };
 
-  if (error) return <div className="text-center text-red-600">{error}</div>;
+  if (loading || error) {
+    return (
+      <div>
+        {/* Header Banner Always Visible */}
+        <HeaderBanner title="Rooms & Suites" backgroundImage="/images/img2.jpg" />
+
+        {/* Loading Placeholder for Full Page */}
+        <div className="flex flex-wrap p-5">
+          {/* Filter Sidebar Placeholder */}
+          <div className="w-full md:w-1/ p-4">
+            <div className="bg-gray-200 p-4 rounded-lg animate-pulse">
+              <div className="h-8 bg-gray-300 rounded mb-4"></div>
+              <div className="space-y-3">
+                <div className="h-6 bg-gray-300 rounded"></div>
+                <div className="h-6 bg-gray-300 rounded"></div>
+                <div className="h-6 bg-gray-300 rounded"></div>
+              </div>
+            </div>
+          </div>
+
+          {/* Room Cards Placeholder */}
+          <main className="w-full md:w-3/4 p-6">
+            <h2 className="text-3xl font-semibold mb-6">
+              {loading ? "Loading Rooms..." : "Error Loading Rooms"}
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {/* Card Skeletons */}
+              {Array(6)
+                .fill(0)
+                .map((_, index) => (
+                  <div
+                    key={index}
+                    className="bg-white shadow-lg rounded-md overflow-hidden flex flex-col group relative animate-pulse"
+                  >
+                    <div className="bg-gray-200 h-[200px] w-full"></div>
+                    <div className="p-4 space-y-3">
+                      <div className="h-6 bg-gray-300 rounded"></div>
+                      <div className="h-6 bg-gray-300 rounded w-24"></div>
+                      <div className="h-8 bg-gray-300 rounded mt-4"></div>
+                    </div>
+                  </div>
+                ))}
+            </div>
+          </main>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div>
+      {/* Always Display the Header Banner */}
       <HeaderBanner title="Rooms & Suites" backgroundImage="/images/img2.jpg" />
+
       <div className="flex flex-wrap p-5">
-        <FilterSidebar filters={filters} toggleFilter={toggleFilter} />
+        {/* Filter Sidebar */}
+        <div className="w-full md:w-1/4 p-4">
+          <FilterSidebar filters={filters} toggleFilter={toggleFilter} />
+        </div>
+
+        {/* Room Cards Section */}
         <main className="w-full md:w-3/4 p-6">
           <h2 className="text-3xl font-semibold mb-6">Available Rooms</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredRooms.length > 0 ? (
               filteredRooms.map((room) => <RoomCard key={room._id} room={room} />)
             ) : (
-              <p className="col-span-full text-center text-gray-600">No rooms available.</p>
+              // Fallback Placeholder if no rooms are found
+              <div className="col-span-full text-center text-gray-600">
+                No rooms available.
+              </div>
             )}
           </div>
         </main>
