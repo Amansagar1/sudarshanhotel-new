@@ -26,9 +26,9 @@ const Aboutus = () => {
           <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">About Us</h1>
           <div className="text-lg mt-4">
             <Link href="/" passHref>
-              <span className="text-lg mt-2">Home /</span>
+              <span className="text-lg mt-2 hover:underline ">Home /</span>
             </Link>
-            <span className="text-lg mt-2">
+            <span className="text-lg mt-2 hover:underline ">
               <Link href="/aboutus"> About Us</Link>
             </span>
           </div>
