@@ -6,7 +6,7 @@ import { FaKey, FaSwimmer } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
 import BookingModal from "../../../components/RoomBooking/BookingPopup";
-import {useRouter  } from "next/navigation"
+import { useRouter } from "next/navigation"
 const RoomDetailsPage = () => {
   const [room, setRoom] = useState(null);
   const [error, setError] = useState(null);
@@ -23,7 +23,8 @@ const RoomDetailsPage = () => {
       setIsAuthenticated(session?.user ? true : false);
     };
 
-    checkAuth()});
+    checkAuth()
+  });
 
 
 
@@ -114,13 +115,13 @@ const RoomDetailsPage = () => {
         <div className="relative z-10 w-full max-w-5xl mx-auto p-4">
           <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">{room.title}</h1>
           <div className="text-lg mt-4">
-          <Link href="/" className="hover:underline">
-            Home /
-          </Link>
+            <Link href="/" className="hover:underline">
+              Home /
+            </Link>
             <span className="text-lg mt-2">
-            <Link href="/rooms" className="hover:underline">
-            Rooms & Suites
-          </Link>
+              <Link href="/rooms" className="hover:underline">
+                Rooms & Suites
+              </Link>
             </span>
           </div>
         </div>
@@ -158,9 +159,8 @@ const RoomDetailsPage = () => {
               {room.title}
               <span>
                 <div
-                  className={`top-4 right-4 px-4 py-2 text-sm rounded-full ${
-                    room.available ? "bg-green-500" : "bg-red-500"
-                  } text-white`}
+                  className={`top-4 right-4 px-4 py-2 text-sm rounded-full ${room.available ? "bg-green-500" : "bg-red-500"
+                    } text-white`}
                 >
                   {room.available ? "Available" : "Not Available"}
                 </div>
@@ -219,10 +219,14 @@ const RoomDetailsPage = () => {
             {/* Booking Options */}
             <div className="flex flex-col gap-2">
               <button
-                className="bg-blue-500 text-white font-semibold py-2 rounded-lg"
+                className={`py-2 rounded-lg font-semibold ${room.available
+                    ? "bg-blue-500 text-white hover:bg-blue-600 cursor-pointer"
+                    : "bg-gray-400 text-gray-600 cursor-not-allowed"
+                  }`}
                 onClick={handleBookNow}
+                disabled={!room.available} // Disable the button if the room is not available
               >
-                Book - {room.price || "N/A"}
+                {room.available ? `Book - ₹${room.price || "N/A"}` : "Room Unavailable"}
               </button>
               <button className="bg-transparent text-blue-500 font-semibold py-2 rounded-lg border border-blue-500">
                 Save to Wishlist

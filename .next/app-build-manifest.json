@@ -16,20 +16,10 @@
       "static/chunks/main-app.js",
       "static/chunks/app/rooms/page.js"
     ],
-    "/amenities/page": [
+    "/rooms/[id]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/amenities/page.js"
-    ],
-    "/aboutus/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/aboutus/page.js"
-    ],
-    "/contact/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/contact/page.js"
+      "static/chunks/app/rooms/[id]/page.js"
     ]
   }
 }

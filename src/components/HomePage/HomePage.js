@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 
 // Import carousel images JSON
-import carouselImages from "./carouselImages.json"; // Adjust the path accordingly
+import carouselImages from "./carouselImages.json"; 
+import  Link  from "next/link";
 
 const images = carouselImages.images;
 
@@ -41,7 +42,7 @@ export default function HomePage() {
           alt={images[currentIndex].alt}
           layout="fill"
           objectFit="cover"
-          priority={true} // Optimize main image load time
+          priority={true} 
           className="fade-animation"
         />
 
@@ -53,9 +54,9 @@ export default function HomePage() {
           <p className="text-lg md:text-2xl lg:text-4xl mb-6 drop-shadow-md">
             A Premier Destination for Comfort, Elegance, and Serenity
           </p>
-          <button className="px-6 py-3 bg-yellow-600 hover:bg-yellow-700 text-white font-semibold rounded shadow-md">
-            Discover Our Rooms and Services
-          </button>
+     <button className="px-6 py-3 bg-yellow-600 hover:bg-yellow-700 text-white font-semibold rounded shadow-md">
+     <Link href="/rooms">     Discover Our Rooms and Services
+     </Link>  </button>
         </div>
       </div>
 

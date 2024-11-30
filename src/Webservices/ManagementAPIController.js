@@ -77,3 +77,26 @@ export const roomBooking = async (bookingDetails) => {
 };
 
 
+
+
+export const createRoom = async (roomData) => {
+  try {
+    const response = await axios.post(EndPoints.POST_ROOMS(), roomData);
+    return response.data;  
+  } catch (error) {
+    console.error("Error creating room:", error);
+    throw error; 
+  }
+};
+
+// Function to get a room by ID (GET /api/rooms/:id)
+export const getRoomById = async (_id) => {
+  try {
+    const response = await axios.get(EndPoints.GET_ROOMID(_id));
+    return response.data;  
+  } catch (error) {
+    console.error("Error fetching room details:", error);
+    throw error;  
+  }
+};
+
