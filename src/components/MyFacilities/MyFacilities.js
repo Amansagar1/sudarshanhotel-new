@@ -18,7 +18,7 @@ const MyFacilities = () => {
   };
 
   return (
-    <section className="bg-gray-900 text-white py-20">
+    <section className="bg-gray-900 text-white py-20  w-full">
       <div className="text-center mb-10 px-4 sm:px-8">
         <h2 className="text-3xl font-bold">Hotel Facilities</h2>
         <p className="text-gray-400 mt-2">
