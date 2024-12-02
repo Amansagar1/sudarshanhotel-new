@@ -83,7 +83,7 @@ const RoomDetailsPage = () => {
       roomTitle: room.title,
       roomPrice: room.price,
     };
-
+  
     try {
       const response = await fetch("/api/book", {
         method: "POST",
@@ -92,10 +92,22 @@ const RoomDetailsPage = () => {
         },
         body: JSON.stringify(bookingData),
       });
-
+  
       const data = await response.json();
       if (data.success) {
         console.log("Booking confirmed:", data);
+  
+        // Send email
+        await fetch("../../../pages/api/sendMail.js", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userEmail: data.userEmail, // Assume this comes back from your booking API
+            bookingData,
+          }),
+        });
       } else {
         console.error("Booking failed:", data.message);
       }
@@ -103,7 +115,8 @@ const RoomDetailsPage = () => {
       console.error("Error during booking:", error);
     }
   };
-
+  
+  
   if (error) return <div className="text-center text-red-500">{error}</div>;
   if (!room) return <div className="text-center">Loading...</div>;
 
@@ -226,7 +239,7 @@ const RoomDetailsPage = () => {
                 onClick={handleBookNow}
                 disabled={!room.available} // Disable the button if the room is not available
               >
-                {room.available ? `Book - ₹${room.price || "N/A"}` : "Room Unavailable"}
+                {room.available ? `Book - ${room.price || "N/A"}` : "Room Unavailable"}
               </button>
               <button className="bg-transparent text-blue-500 font-semibold py-2 rounded-lg border border-blue-500">
                 Save to Wishlist

@@ -16,10 +16,10 @@
       "static/chunks/main-app.js",
       "static/chunks/app/rooms/page.js"
     ],
-    "/amenities/page": [
+    "/rooms/[id]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/amenities/page.js"
+      "static/chunks/app/rooms/[id]/page.js"
     ],
     "/aboutus/page": [
       "static/chunks/webpack.js",
