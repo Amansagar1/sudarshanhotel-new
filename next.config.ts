@@ -2,7 +2,8 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   basePath:"/",
-  distDir: 'build',  // Custom build directory
+  // distDir: 'build',  
+  distDir:"dist",// Custom build directory
   output: 'standalone',  // For Vercel or standalone deployment
   typescript: {
     ignoreBuildErrors: true,  
