@@ -190,7 +190,7 @@ const ContactUs = () => {
               <div className="w-full max-w-md text-center animate-fade-in">
                 <h2 className="text-2xl font-bold mb-4">Thank You!</h2>
                 <p className="text-white">
-                  Your message has been sent successfully. We'll get back to you
+                  Your message has been sent successfully. We&apos;ll get back to you
                   shortly.
                 </p>
               </div>
