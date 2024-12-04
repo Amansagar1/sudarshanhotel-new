@@ -1,5 +1,5 @@
 
-// const BASE_URL = "http://localhost:5000";
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL ;
 
 
 
@@ -7,13 +7,13 @@ const EndPoints = {
 
 
     GET_ROOMSDETAILS: () =>
-    `http://localhost:5000/api/roomdetails`,
+        BASE_URL+ `/api/roomdetails`,
 
-    BOOKING_ROOMS: () => `http://localhost:5000/api/book`,
+    BOOKING_ROOMS: () => BASE_URL+`/api/book`,
 
-POST_ROOMS : () => `http://localhost:5000/api/rooms`,
+POST_ROOMS : () =>BASE_URL+ `/api/rooms`,
 
-GET_ROOMID: (_id) => ` http://localhost:5000/api/rooms/:${_id} `,
+GET_ROOMID: (_id) =>BASE_URL+ `/api/rooms/:${_id} `,
 
 };
 
