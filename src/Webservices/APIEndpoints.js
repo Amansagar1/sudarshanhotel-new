@@ -4,8 +4,7 @@
 
 
 const EndPoints = {
-    GET_ROOMS: () =>
-     `http://localhost:5000/api/rooms`,
+
 
     GET_ROOMSDETAILS: () =>
     `http://localhost:5000/api/roomdetails`,
