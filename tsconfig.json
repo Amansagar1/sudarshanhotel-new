@@ -37,7 +37,7 @@
     "src/pages/api/auth/[...nextauth].ts",
     "src/pages/api/auth/signin.js",
     "dist/types/**/*.ts"
-  ],
+, "next.config.js"  ],
   "exclude": [
     "node_modules"
   ]
