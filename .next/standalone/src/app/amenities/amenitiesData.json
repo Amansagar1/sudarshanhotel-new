@@ -1,0 +1,89 @@
+{
+  "heroSection": {
+    "backgroundImage": "/images/img1.jpg",
+    "title": "Amenities",
+    "breadcrumbs": [
+      { "label": "Home", "url": "/" },
+      { "label": "Amenities", "url": "/amenities" }
+    ]
+  },
+  "roomTypes": [
+    {
+      "id": 1,
+      "name": "Deluxe Room",
+      "price": "3800",
+      "occupancy": "Max 2 guests",
+      "size": "150 sq ft",
+      "description": "Comfortable and well-furnished with a double bed, ideal for a relaxing stay."
+    },
+    {
+      "id": 2,
+      "name": "Super Deluxe Room",
+      "price": "4600",
+      "occupancy": "Max 3 guests",
+      "size": "180 sq ft",
+      "description": "Spacious with modern amenities and great comfort for small families or groups."
+    },
+    {
+      "id": 3,
+      "name": "Family Room",
+      "price": "5800",
+      "occupancy": "Max 5 guests",
+      "size": "250 sq ft",
+      "description": "Perfect for larger families with both double and single beds."
+    }
+  ],
+  "amenitiesSection": {
+    "title": "Hotel Amenities",
+    "amenities": [
+      { "id": 1, "name": "Free Wi-Fi", "description": "High-speed internet access throughout the hotel.", "icon": "wifi" },
+      { "id": 2, "name": "Parking", "description": "Complimentary secure parking available.", "icon": "parking" },
+      { "id": 3, "name": "Room Service", "description": "24-hour room service for dining in the comfort of your room.", "icon": "room_service" }
+    ]
+  },
+  "diningOptionsSection": {
+    "title": "Dining Options",
+    "diningOptions": [
+      {
+        "id": 1,
+        "title": "Restaurant One",
+        "description": "A fine-dining experience with international cuisine.",
+        "timing": "6:00 AM - 10:00 PM",
+        "location": "Ground Floor"
+      },
+      {
+        "id": 2,
+        "title": "Cafe Lounge",
+        "description": "A casual lounge for snacks and beverages.",
+        "timing": "9:00 AM - 11:00 PM",
+        "location": "First Floor"
+      },
+      {
+        "id": 3,
+        "title": "Party Hall",
+        "description": "A vibrant space designed for casual gatherings and celebrations. .",
+        "timing": "9:00 AM - 11:00 PM",
+        "location": "First Floor"
+      }
+    ]
+  },
+  "restaurantsSection": {
+    "title": "Our Restaurants",
+    "restaurants": [
+      {
+        "id": 1,
+        "name": "The Gourmet Table",
+        "description": "A luxurious experience with signature dishes.",
+        "timing": "12:00 PM - 11:00 PM",
+        "openDays": "All Days"
+      },
+      {
+        "id": 2,
+        "name": "Sea Breeze",
+        "description": "A seaside restaurant offering fresh seafood.",
+        "timing": "10:00 AM - 10:00 PM",
+        "openDays": "All Days"
+      }
+    ]
+  }
+}

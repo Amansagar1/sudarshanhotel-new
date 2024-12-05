@@ -148,8 +148,10 @@ const RoomDetailsPage = () => {
             <Image
               src={images[currentImageIndex] || "/images/img1.jpg"}
               alt="Room Image"
-              className="w-full h-full object-cover rounded-l-lg"
-              layout="fill"
+              className="w-full h-full object-cover rounded-l-lg fill"
+              // layout="fill"
+              width={300}
+              height={300}
               objectFit="cover"
             />
             <button

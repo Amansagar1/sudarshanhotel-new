@@ -47,8 +47,8 @@ const Footer = () => {
           <div className="md:w-full text-center md:text-left">
             <h4 className="font-semibold text-white">Support</h4>
             <p className="mt-4 text-white">For inquiries, call or email:</p>
-            <a href="tel:+1234567890" className="text-white hover:text-rose-600">+91 00000000000</a><br />
-            <a href="mailto:info@sudarshanhotel.com" className="text-white hover:text-rose-600">hotelsudarshan01@gmail.com</a>
+            <Link href="tel:+1234567890" className="text-white hover:text-rose-600">+91 00000000000</Link><br />
+            <Link href="mailto:info@sudarshanhotel.com" className="text-white hover:text-rose-600">hotelsudarshan01@gmail.com</Link>
           </div>
 
           {/* Quick Links Section */}
@@ -85,8 +85,8 @@ const Footer = () => {
             <p>&copy; {year} Hotel Sudarshan . All rights reserved.</p>
           </div>
           <div className="flex gap-6 mt-4 sm:mt-0">
-            <a href="/privacy-policy" className="text-white hover:text-rose-600">Privacy Policy</a>
-            <a href="/terms-conditions" className="text-white hover:text-rose-600">Terms & Conditions</a>
+            <Link href="/privacy-policy" className="text-white hover:text-rose-600">Privacy Policy</Link>
+            <Link href="/terms-conditions" className="text-white hover:text-rose-600">Terms & Conditions</Link>
           </div>
         </div>
       </div>
