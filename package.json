@@ -12,12 +12,9 @@
     "@auth/mongodb-adapter": "^3.7.4",
     "axios": "^1.7.7",
     "bcryptjs": "^2.4.3",
-    "body-parser": "^1.20.3",
-    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "emailjs": "^4.0.3",
     "emailjs-com": "^3.2.0",
-    "express": "^4.21.1",
     "google-auth-library": "^9.15.0",
     "googleapis": "^144.0.0",
     "js-cookie": "^3.0.5",
@@ -44,7 +41,6 @@
     "file-loader": "^6.2.0",
     "nodemon": "^3.1.7",
     "postcss": "^8",
-    "tailwindcss": "^3.4.1",
-    "typescript": "^5"
+    "tailwindcss": "^3.4.1"
   }
 }

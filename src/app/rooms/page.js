@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { getAllRoomsDetails } from "../../Webservices/ManagementAPIController";
+import { getAllRoomsDetails } from "../../Webservices/HotelAPIController";
 import FilterSidebar from "../../components/Rooms/FilterSidebar";
 import HeaderBanner from "../../components/Rooms/HeaderBanner";
 import RoomCard from "../../components/Rooms/RoomCard";

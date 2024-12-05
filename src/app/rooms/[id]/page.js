@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
-import { getRoomDetailsById } from "../../../Webservices/ManagementAPIController";
+import { getRoomDetailsById } from "../../../Webservices/HotelAPIController";
 import { FaKey, FaSwimmer } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
@@ -180,7 +180,7 @@ const RoomDetailsPage = () => {
               </span>
             </h3>
             <p className="text-gray-700 mb-6">{room.description || "Description not available"}</p>
-            <p className="text-lg font-semibold mb-4">Price: ₹{room.price || "N/A"}</p>
+            <p className="text-lg font-semibold mb-4">Price: {room.price || "N/A"}</p>
             <p className="text-yellow-500 font-bold mb-6">
               Rating: {room.rating || "No rating"} ⭐
             </p>

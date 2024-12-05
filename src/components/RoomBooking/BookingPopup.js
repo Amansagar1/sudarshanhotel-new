@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { roomBooking } from "../../Webservices/ManagementAPIController";
+import { roomBooking } from "../../Webservices/HotelAPIController";
 import emailjs from "emailjs-com";
 
 const BookingModal = ({ isVisible, onClose, roomDetails }) => {
